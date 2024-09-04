@@ -1,0 +1,3838 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{array}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\newenvironment{Shaded}{}{}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{\textbf{#1}}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+% \setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Google Python Style Guide}
+\date{\today}
+
+\makeatletter
+\renewcommand{\maketitle}{
+    \begin{titlepage}
+        \begin{center}
+            \vspace*{\fill}
+            {\Huge \textbf{\@title}}
+            \par\vspace{1.5cm}
+            {\large \@date} \\[4cm]
+            \hrule
+            \begin{abstract}
+              \large
+              The Google Python Style Guide is a comprehensive set of best practices and conventions designed to ensure consistency, readability, and maintainability in Python code.
+              It covers a wide range of topics, including naming conventions, code formatting, documentation, and programming practices.
+              The guide emphasizes the importance of writing clear, concise, and efficient code, and provides practical advice on how to achieve this. By adhering to the guidelines outlined in the Google Python Style Guide, developers can create code that is not only functional but also easy to understand and maintain, thereby promoting collaboration and reducing the likelihood of errors.
+              This document serves as a valuable resource for both individual developers and teams looking to adopt a standardized approach to Python programming.
+            \end{abstract}
+            \hrule
+            \vspace*{\fill}
+          \end{center}
+        \end{titlepage}
+        }
+\makeatother
+
+\begin{document}
+
+\maketitle
+
+\clearpage
+{
+\setcounter{tocdepth}{3}
+\tableofcontents
+}
+
+\clearpage
+\section{Background}
+
+Python is the main dynamic language used at Google. This style guide is
+a list of \emph{dos and don'ts} for Python programs.
+
+To help you format code correctly, we've created a
+\href{google_python_style.vim}{settings file for Vim}. For Emacs, the
+default settings should be fine.
+
+Many teams use the \href{https://github.com/psf/black}{Black} or
+\href{https://github.com/google/pyink}{Pyink} auto-formatter to avoid
+arguing over formatting.
+
+\section{Python Language Rules}
+
+\subsection{Lint}
+
+Run \texttt{pylint} over your code using this
+\href{https://google.github.io/styleguide/pylintrc}{pylintrc}.
+
+\paragraph{Definition}
+
+\texttt{pylint} is a tool for finding bugs and style problems in Python
+source code. It finds problems that are typically caught by a compiler
+for less dynamic languages like C and C++. Because of the dynamic nature
+of Python, some warnings may be incorrect; however, spurious warnings
+should be fairly infrequent.
+
+\paragraph{Pros}
+
+Catches easy-to-miss errors like typos, using-vars-before-assignment,
+etc.
+
+\paragraph{Cons}
+
+\texttt{pylint} isn't perfect. To take advantage of it, sometimes we'll
+need to write around it, suppress its warnings or fix it.
+
+\paragraph{Decision}
+
+Make sure you run \texttt{pylint} on your code.
+
+Suppress warnings if they are inappropriate so that other issues are not
+hidden. To suppress warnings, you can set a line-level comment:
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ do\_PUT(}\VariableTok{self}\NormalTok{):  }\CommentTok{\# WSGI name, so pylint: disable=invalid{-}name}
+\NormalTok{  ...}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+\texttt{pylint} warnings are each identified by symbolic name
+(\texttt{empty-docstring}) Google-specific warnings start with
+\texttt{g-}.
+
+If the reason for the suppression is not clear from the symbolic name,
+add an explanation.
+
+Suppressing in this way has the advantage that we can easily search for
+suppressions and revisit them.
+
+You can get a list of \texttt{pylint} warnings by doing:
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{pylint {-}{-}list{-}msgs}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+To get more information on a particular message, use:
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{pylint {-}{-}help{-}msg=invalid{-}name}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+Prefer \texttt{pylint:\ disable} to the deprecated older form
+\texttt{pylint:\ disable-msg}.
+
+Unused argument warnings can be suppressed by deleting the variables at
+the beginning of the function. Always include a comment explaining why
+you are deleting it. ``Unused.'' is sufficient. For example:
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ viking\_cafe\_order(spam: }\BuiltInTok{str}\NormalTok{, beans: }\BuiltInTok{str}\NormalTok{, eggs: }\BuiltInTok{str} \OperatorTok{|} \VariableTok{None} \OperatorTok{=} \VariableTok{None}\NormalTok{) }\OperatorTok{{-}\textgreater{}} \BuiltInTok{str}\NormalTok{:}
+    \KeywordTok{del}\NormalTok{ beans, eggs  }\CommentTok{\# Unused by vikings.}
+    \ControlFlowTok{return}\NormalTok{ spam }\OperatorTok{+}\NormalTok{ spam }\OperatorTok{+}\NormalTok{ spam}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+Other common forms of suppressing this warning include using
+`\texttt{\_}' as the identifier for the unused argument or prefixing the
+argument name with `\texttt{unused\_}', or assigning them to
+`\texttt{\_}'. These forms are allowed but no longer encouraged. These
+break callers that pass arguments by name and do not enforce that the
+arguments are actually unused.
+
+\subsection{Imports}
+
+Use \texttt{import} statements for packages and modules only, not for
+individual types, classes, or functions.
+
+\paragraph{Definition}
+
+Reusability mechanism for sharing code from one module to another.
+
+\paragraph{Pros}
+
+The namespace management convention is simple. The source of each
+identifier is indicated in a consistent way; \texttt{x.Obj} says that
+object \texttt{Obj} is defined in module \texttt{x}.
+
+\paragraph{Cons}
+
+Module names can still collide. Some module names are inconveniently
+long.
+
+\paragraph{Decision}
+
+\begin{itemize}
+\tightlist
+\item
+  Use \texttt{import\ x} for importing packages and modules.
+\item
+  Use \texttt{from\ x\ import\ y} where \texttt{x} is the package prefix
+  and \texttt{y} is the module name with no prefix.
+\item
+  Use \texttt{from\ x\ import\ y\ as\ z} in any of the following
+  circumstances:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Two modules named \texttt{y} are to be imported.
+  \item
+    \texttt{y} conflicts with a top-level name defined in the current
+    module.
+  \item
+    \texttt{y} conflicts with a common parameter name that is part of
+    the public API (e.g., \texttt{features}).
+  \item
+    \texttt{y} is an inconveniently long name.
+  \item
+    \texttt{y} is too generic in the context of your code (e.g.,
+    \texttt{from\ \ \ \ \ storage.file\_system\ import\ options\ as\ fs\_options}).
+  \end{itemize}
+\item
+  Use \texttt{import\ y\ as\ z} only when \texttt{z} is a standard
+  abbreviation (e.g., \texttt{import\ \ \ \ \ numpy\ as\ np}).
+\end{itemize}
+
+For example the module \texttt{sound.effects.echo} may be imported as
+follows:
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{from}\NormalTok{ sound.effects }\ImportTok{import}\NormalTok{ echo}
+\NormalTok{...}
+\NormalTok{echo.EchoFilter(}\BuiltInTok{input}\NormalTok{, output, delay}\OperatorTok{=}\FloatTok{0.7}\NormalTok{, atten}\OperatorTok{=}\DecValTok{4}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+Do not use relative names in imports. Even if the module is in the same
+package, use the full package name. This helps prevent unintentionally
+importing a package twice.
+
+\subparagraph{Exemptions}
+
+Exemptions from this rule:
+
+\begin{itemize}
+\tightlist
+\item
+  Symbols from the following modules are used to support static analysis
+  and type checking:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \hyperref[typing-imports]{\texttt{typing} module}
+  \item
+    \hyperref[typing-imports]{\texttt{collections.abc} module}
+  \item
+    \href{https://github.com/python/typing_extensions/blob/main/README.md}{\texttt{typing\_extensions}
+    module}
+  \end{itemize}
+\item
+  Redirects from the
+  \href{https://six.readthedocs.io/\#module-six.moves}{six.moves
+  module}.
+\end{itemize}
+
+\subsection{Packages}
+
+Import each module using the full pathname location of the module.
+
+\paragraph{Pros}
+
+Avoids conflicts in module names or incorrect imports due to the module
+search path not being what the author expected. Makes it easier to find
+modules.
+
+\paragraph{Cons}
+
+Makes it harder to deploy code because you have to replicate the package
+hierarchy. Not really a problem with modern deployment mechanisms.
+
+\paragraph{Decision}
+
+All new code should import each module by its full package name.
+
+Imports should be as follows:
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Yes:}
+  \CommentTok{\# Reference absl.flags in code with the complete name (verbose).}
+  \ImportTok{import}\NormalTok{ absl.flags}
+  \ImportTok{from}\NormalTok{ doctor.who }\ImportTok{import}\NormalTok{ jodie}
+
+\NormalTok{  \_FOO }\OperatorTok{=}\NormalTok{ absl.flags.DEFINE\_string(...)}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Yes:}
+  \CommentTok{\# Reference flags in code with just the module name (common).}
+  \ImportTok{from}\NormalTok{ absl }\ImportTok{import}\NormalTok{ flags}
+  \ImportTok{from}\NormalTok{ doctor.who }\ImportTok{import}\NormalTok{ jodie}
+
+\NormalTok{  \_FOO }\OperatorTok{=}\NormalTok{ flags.DEFINE\_string(...)}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+\emph{(assume this file lives in \texttt{doctor/who/} where
+\texttt{jodie.py} also exists)}
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{No:}
+  \CommentTok{\# Unclear what module the author wanted and what will be imported.  The actual}
+  \CommentTok{\# import behavior depends on external factors controlling sys.path.}
+  \CommentTok{\# Which possible jodie module did the author intend to import?}
+  \ImportTok{import}\NormalTok{ jodie}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+The directory the main binary is located in should not be assumed to be
+in \texttt{sys.path} despite that happening in some environments. This
+being the case, code should assume that \texttt{import\ jodie} refers to
+a third-party or top-level package named \texttt{jodie}, not a local
+\texttt{jodie.py}.
+
+\subsection{Exceptions}
+
+Exceptions are allowed but must be used carefully.
+
+\paragraph{Definition}
+
+Exceptions are a means of breaking out of normal control flow to handle
+errors or other exceptional conditions.
+
+\paragraph{Pros}
+
+The control flow of normal operation code is not cluttered by
+error-handling code. It also allows the control flow to skip multiple
+frames when a certain condition occurs, e.g., returning from N nested
+functions in one step instead of having to plumb error codes through.
+
+\paragraph{Cons}
+
+May cause the control flow to be confusing. Easy to miss error cases
+when making library calls.
+
+\paragraph{Decision}
+
+Exceptions must follow certain conditions:
+
+\begin{itemize}
+\item
+  Make use of built-in exception classes when it makes sense. For
+  example, raise a \texttt{ValueError} to indicate a programming mistake
+  like a violated precondition, such as may happen when validating
+  function arguments.
+\item
+  Do not use \texttt{assert} statements in place of conditionals or
+  validating preconditions. They must not be critical to the application
+  logic. A litmus test would be that the \texttt{assert} could be
+  removed without breaking the code. \texttt{assert} conditionals are
+  \href{https://docs.python.org/3/reference/simple_stmts.html\#the-assert-statement}{not
+  guaranteed} to be evaluated. For \href{https://pytest.org}{pytest}
+  based tests, \texttt{assert} is okay and expected to verify
+  expectations. For example:
+
+\begin{samepage}
+  \begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Yes:}
+  \KeywordTok{def}\NormalTok{ connect\_to\_next\_port(}\VariableTok{self}\NormalTok{, minimum: }\BuiltInTok{int}\NormalTok{) }\OperatorTok{{-}\textgreater{}} \BuiltInTok{int}\NormalTok{:}
+    \CommentTok{"""Connects to the next available port.}
+
+\CommentTok{    Args:}
+\CommentTok{      minimum: A port value greater or equal to 1024.}
+
+\CommentTok{    Returns:}
+\CommentTok{      The new minimum port.}
+
+\CommentTok{    Raises:}
+\CommentTok{      ConnectionError: If no available port is found.}
+\CommentTok{    """}
+    \ControlFlowTok{if}\NormalTok{ minimum }\OperatorTok{\textless{}} \DecValTok{1024}\NormalTok{:}
+      \CommentTok{\# Note that this raising of ValueError is not mentioned in the doc}
+      \CommentTok{\# string\textquotesingle{}s "Raises:" section because it is not appropriate to}
+      \CommentTok{\# guarantee this specific behavioral reaction to API misuse.}
+      \ControlFlowTok{raise} \PreprocessorTok{ValueError}\NormalTok{(}\SpecialStringTok{f\textquotesingle{}Min. port must be at least 1024, not }\SpecialCharTok{\{}\NormalTok{minimum}\SpecialCharTok{\}}\SpecialStringTok{.\textquotesingle{}}\NormalTok{)}
+\NormalTok{    port }\OperatorTok{=} \VariableTok{self}\NormalTok{.\_find\_next\_open\_port(minimum)}
+    \ControlFlowTok{if}\NormalTok{ port }\KeywordTok{is} \VariableTok{None}\NormalTok{:}
+      \ControlFlowTok{raise} \PreprocessorTok{ConnectionError}\NormalTok{(}
+          \SpecialStringTok{f\textquotesingle{}Could not connect to service on port }\SpecialCharTok{\{}\NormalTok{minimum}\SpecialCharTok{\}}\SpecialStringTok{ or higher.\textquotesingle{}}\NormalTok{)}
+    \CommentTok{\# The code does not depend on the result of this assert.}
+    \ControlFlowTok{assert}\NormalTok{ port }\OperatorTok{\textgreater{}=}\NormalTok{ minimum, (}
+        \SpecialStringTok{f\textquotesingle{}Unexpected port }\SpecialCharTok{\{}\NormalTok{port}\SpecialCharTok{\}}\SpecialStringTok{ when minimum was }\SpecialCharTok{\{}\NormalTok{minimum}\SpecialCharTok{\}}\SpecialStringTok{.\textquotesingle{}}\NormalTok{)}
+    \ControlFlowTok{return}\NormalTok{ port}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{No:}
+  \KeywordTok{def}\NormalTok{ connect\_to\_next\_port(}\VariableTok{self}\NormalTok{, minimum: }\BuiltInTok{int}\NormalTok{) }\OperatorTok{{-}\textgreater{}} \BuiltInTok{int}\NormalTok{:}
+    \CommentTok{"""Connects to the next available port.}
+
+\CommentTok{    Args:}
+\CommentTok{      minimum: A port value greater or equal to 1024.}
+
+\CommentTok{    Returns:}
+\CommentTok{      The new minimum port.}
+\CommentTok{    """}
+    \ControlFlowTok{assert}\NormalTok{ minimum }\OperatorTok{\textgreater{}=} \DecValTok{1024}\NormalTok{, }\StringTok{\textquotesingle{}Minimum port must be at least 1024.\textquotesingle{}}
+    \CommentTok{\# The following code depends on the previous assert.}
+\NormalTok{    port }\OperatorTok{=} \VariableTok{self}\NormalTok{.\_find\_next\_open\_port(minimum)}
+    \ControlFlowTok{assert}\NormalTok{ port }\KeywordTok{is} \KeywordTok{not} \VariableTok{None}
+    \CommentTok{\# The type checking of the return statement relies on the assert.}
+    \ControlFlowTok{return}\NormalTok{ port}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+\item
+  Libraries or packages may define their own exceptions. When doing so
+  they must inherit from an existing exception class. Exception names
+  should end in \texttt{Error} and should not introduce repetition
+  (\texttt{foo.FooError}).
+\item
+  Never use catch-all \texttt{except:} statements, or catch
+  \texttt{Exception} or \texttt{StandardError}, unless you are
+
+  \begin{itemize}
+  \tightlist
+  \item
+    re-raising the exception, or
+  \item
+    creating an isolation point in the program where exceptions are not
+    propagated but are recorded and suppressed instead, such as
+    protecting a thread from crashing by guarding its outermost block.
+  \end{itemize}
+
+  Python is very tolerant in this regard and \texttt{except:} will
+  really catch everything including misspelled names, sys.exit() calls,
+  Ctrl+C interrupts, unittest failures and all kinds of other exceptions
+  that you simply don't want to catch.
+\item
+  Minimize the amount of code in a \texttt{try}/\texttt{except} block.
+  The larger the body of the \texttt{try}, the more likely that an
+  exception will be raised by a line of code that you didn't expect to
+  raise an exception. In those cases, the \texttt{try}/\texttt{except}
+  block hides a real error.
+\item
+  Use the \texttt{finally} clause to execute code whether or not an
+  exception is raised in the \texttt{try} block. This is often useful
+  for cleanup, i.e., closing a file.
+\end{itemize}
+
+\subsection{Mutable} Global State
+
+Avoid mutable global state.
+
+\paragraph{Definition}
+
+Module-level values or class attributes that can get mutated during
+program execution.
+
+\paragraph{Pros}
+
+Occasionally useful.
+
+\paragraph{Cons}
+
+\begin{itemize}
+\item
+  Breaks encapsulation: Such design can make it hard to achieve valid
+  objectives. For example, if global state is used to manage a database
+  connection, then connecting to two different databases at the same
+  time (such as for computing differences during a migration) becomes
+  difficult. Similar problems easily arise with global registries.
+\item
+  Has the potential to change module behavior during the import, because
+  assignments to global variables are done when the module is first
+  imported.
+\end{itemize}
+
+\paragraph{Decision}
+
+Avoid mutable global state.
+
+In those rare cases where using global state is warranted, mutable
+global entities should be declared at the module level or as a class
+attribute and made internal by prepending an \texttt{\_} to the name. If
+necessary, external access to mutable global state must be done through
+public functions or class methods. See \hyperref[s3.16-naming]{Naming}
+below. Please explain the design reasons why mutable global state is
+being used in a comment or a doc linked to from a comment.
+
+Module-level constants are permitted and encouraged. For example:
+\texttt{\_MAX\_HOLY\_HANDGRENADE\_COUNT\ =\ 3} for an internal use
+constant or \texttt{SIR\_LANCELOTS\_FAVORITE\_COLOR\ =\ "blue"} for a
+public API constant. Constants must be named using all caps with
+underscores. See \hyperref[s3.16-naming]{Naming} below.
+
+\subsection{Nested/Local/Inner Classes and Functions}
+
+Nested local functions or classes are fine when used to close over a
+local variable. Inner classes are fine.
+
+\paragraph{Definition}
+
+A class can be defined inside of a method, function, or class. A
+function can be defined inside a method or function. Nested functions
+have read-only access to variables defined in enclosing scopes.
+
+\paragraph{Pros}
+
+Allows definition of utility classes and functions that are only used
+inside of a very limited scope. Very
+\href{https://en.wikipedia.org/wiki/Abstract_data_type}{ADT}-y. Commonly
+used for implementing decorators.
+
+\paragraph{Cons}
+
+Nested functions and classes cannot be directly tested. Nesting can make
+the outer function longer and less readable.
+
+\paragraph{Decision}
+
+They are fine with some caveats. Avoid nested functions or classes
+except when closing over a local value other than \texttt{self} or
+\texttt{cls}. Do not nest a function just to hide it from users of a
+module. Instead, prefix its name with an \_ at the module level so that
+it can still be accessed by tests.
+
+\subsection{Comprehensions \& Generator Expressions}
+
+Okay to use for simple cases.
+
+\paragraph{Definition}
+
+List, Dict, and Set comprehensions as well as generator expressions
+provide a concise and efficient way to create container types and
+iterators without resorting to the use of traditional loops,
+\texttt{map()}, \texttt{filter()}, or \texttt{lambda}.
+
+\paragraph{Pros}
+
+Simple comprehensions can be clearer and simpler than other dict, list,
+or set creation techniques. Generator expressions can be very efficient,
+since they avoid the creation of a list entirely.
+
+\paragraph{Cons}
+
+Complicated comprehensions or generator expressions can be hard to read.
+
+\paragraph{Decision}
+
+Comprehensions are allowed, however multiple \texttt{for} clauses or
+filter expressions are not permitted. Optimize for readability, not
+conciseness.
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Yes:}
+\NormalTok{  result }\OperatorTok{=}\NormalTok{ [mapping\_expr }\ControlFlowTok{for}\NormalTok{ value }\KeywordTok{in}\NormalTok{ iterable }\ControlFlowTok{if}\NormalTok{ filter\_expr]}
+
+\NormalTok{  result }\OperatorTok{=}\NormalTok{ [}
+\NormalTok{      is\_valid(metric}\OperatorTok{=}\NormalTok{\{}\StringTok{\textquotesingle{}key\textquotesingle{}}\NormalTok{: value\})}
+      \ControlFlowTok{for}\NormalTok{ value }\KeywordTok{in}\NormalTok{ interesting\_iterable}
+      \ControlFlowTok{if}\NormalTok{ a\_longer\_filter\_expression(value)}
+\NormalTok{  ]}
+
+\NormalTok{  descriptive\_name }\OperatorTok{=}\NormalTok{ [}
+\NormalTok{      transform(\{}\StringTok{\textquotesingle{}key\textquotesingle{}}\NormalTok{: key, }\StringTok{\textquotesingle{}value\textquotesingle{}}\NormalTok{: value\}, color}\OperatorTok{=}\StringTok{\textquotesingle{}black\textquotesingle{}}\NormalTok{)}
+      \ControlFlowTok{for}\NormalTok{ key, value }\KeywordTok{in}\NormalTok{ generate\_iterable(some\_input)}
+      \ControlFlowTok{if}\NormalTok{ complicated\_condition\_is\_met(key, value)}
+\NormalTok{  ]}
+
+\NormalTok{  result }\OperatorTok{=}\NormalTok{ []}
+  \ControlFlowTok{for}\NormalTok{ x }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\DecValTok{10}\NormalTok{):}
+    \ControlFlowTok{for}\NormalTok{ y }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\DecValTok{5}\NormalTok{):}
+      \ControlFlowTok{if}\NormalTok{ x }\OperatorTok{*}\NormalTok{ y }\OperatorTok{\textgreater{}} \DecValTok{10}\NormalTok{:}
+\NormalTok{        result.append((x, y))}
+
+  \ControlFlowTok{return}\NormalTok{ \{}
+\NormalTok{      x: complicated\_transform(x)}
+      \ControlFlowTok{for}\NormalTok{ x }\KeywordTok{in}\NormalTok{ long\_generator\_function(parameter)}
+      \ControlFlowTok{if}\NormalTok{ x }\KeywordTok{is} \KeywordTok{not} \VariableTok{None}
+\NormalTok{  \}}
+
+  \ControlFlowTok{return}\NormalTok{ (x}\OperatorTok{**}\DecValTok{2} \ControlFlowTok{for}\NormalTok{ x }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\DecValTok{10}\NormalTok{))}
+
+\NormalTok{  unique\_names }\OperatorTok{=}\NormalTok{ \{user.name }\ControlFlowTok{for}\NormalTok{ user }\KeywordTok{in}\NormalTok{ users }\ControlFlowTok{if}\NormalTok{ user }\KeywordTok{is} \KeywordTok{not} \VariableTok{None}\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{No:}
+\NormalTok{  result }\OperatorTok{=}\NormalTok{ [(x, y) }\ControlFlowTok{for}\NormalTok{ x }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\DecValTok{10}\NormalTok{) }\ControlFlowTok{for}\NormalTok{ y }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\DecValTok{5}\NormalTok{) }\ControlFlowTok{if}\NormalTok{ x }\OperatorTok{*}\NormalTok{ y }\OperatorTok{\textgreater{}} \DecValTok{10}\NormalTok{]}
+
+  \ControlFlowTok{return}\NormalTok{ (}
+\NormalTok{      (x, y, z)}
+      \ControlFlowTok{for}\NormalTok{ x }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\DecValTok{5}\NormalTok{)}
+      \ControlFlowTok{for}\NormalTok{ y }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\DecValTok{5}\NormalTok{)}
+      \ControlFlowTok{if}\NormalTok{ x }\OperatorTok{!=}\NormalTok{ y}
+      \ControlFlowTok{for}\NormalTok{ z }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\DecValTok{5}\NormalTok{)}
+      \ControlFlowTok{if}\NormalTok{ y }\OperatorTok{!=}\NormalTok{ z}
+\NormalTok{  )}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+\subsection{Default} Iterators and Operators
+
+Use default iterators and operators for types that support them, like
+lists, dictionaries, and files.
+
+\paragraph{Definition}
+
+Container types, like dictionaries and lists, define default iterators
+and membership test operators (``in'' and ``not in'').
+
+\paragraph{Pros}
+
+The default iterators and operators are simple and efficient. They
+express the operation directly, without extra method calls. A function
+that uses default operators is generic. It can be used with any type
+that supports the operation.
+
+\paragraph{Cons}
+
+You can't tell the type of objects by reading the method names (unless
+the variable has type annotations). This is also an advantage.
+
+\paragraph{Decision}
+
+Use default iterators and operators for types that support them, like
+lists, dictionaries, and files. The built-in types define iterator
+methods, too. Prefer these methods to methods that return lists, except
+that you should not mutate a container while iterating over it.
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Yes:  }\ControlFlowTok{for}\NormalTok{ key }\KeywordTok{in}\NormalTok{ adict: ...}
+      \ControlFlowTok{if}\NormalTok{ obj }\KeywordTok{in}\NormalTok{ alist: ...}
+      \ControlFlowTok{for}\NormalTok{ line }\KeywordTok{in}\NormalTok{ afile: ...}
+      \ControlFlowTok{for}\NormalTok{ k, v }\KeywordTok{in}\NormalTok{ adict.items(): ...}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{No:   }\ControlFlowTok{for}\NormalTok{ key }\KeywordTok{in}\NormalTok{ adict.keys(): ...}
+      \ControlFlowTok{for}\NormalTok{ line }\KeywordTok{in}\NormalTok{ afile.readlines(): ...}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+\subsection{Generators}
+
+Use generators as needed.
+
+\paragraph{Definition}
+
+A generator function returns an iterator that yields a value each time
+it executes a yield statement. After it yields a value, the runtime
+state of the generator function is suspended until the next value is
+needed.
+
+\paragraph{Pros}
+
+Simpler code, because the state of local variables and control flow are
+preserved for each call. A generator uses less memory than a function
+that creates an entire list of values at once.
+
+\paragraph{Cons}
+
+Local variables in the generator will not be garbage collected until the
+generator is either consumed to exhaustion or itself garbage collected.
+
+\paragraph{Decision}
+
+Fine. Use ``Yields:'' rather than ``Returns:'' in the docstring for
+generator functions.
+
+If the generator manages an expensive resource, make sure to force the
+clean up.
+
+A good way to do the clean up is by wrapping the generator with a
+context manager \href{https://peps.python.org/pep-0533/}{PEP-0533}.
+
+\subsection{Lambda Functions}
+
+Okay for one-liners. Prefer generator expressions over \texttt{map()} or
+\texttt{filter()} with a \texttt{lambda}.
+
+\paragraph{Definition}
+
+Lambdas define anonymous functions in an expression, as opposed to a
+statement.
+
+\paragraph{Pros}
+
+Convenient.
+
+\paragraph{Cons}
+
+Harder to read and debug than local functions. The lack of names means
+stack traces are more difficult to understand. Expressiveness is limited
+because the function may only contain an expression.
+
+\paragraph{Decision}
+
+Lambdas are allowed. If the code inside the lambda function spans
+multiple lines or is longer than 60-80 chars, it might be better to
+define it as a regular \hyperref[lexical-scoping]{nested function}.
+
+For common operations like multiplication, use the functions from the
+\texttt{operator} module instead of lambda functions. For example,
+prefer \texttt{operator.mul} to \texttt{lambda\ x,\ y:\ x\ *\ y}.
+
+\subsection{Conditional Expressions}
+
+Okay for simple cases.
+
+\paragraph{Definition}
+
+Conditional expressions (sometimes called a ``ternary operator'') are
+mechanisms that provide a shorter syntax for if statements. For example:
+\texttt{x\ =\ 1\ if\ cond\ else\ 2}.
+
+\paragraph{Pros}
+
+Shorter and more convenient than an if statement.
+
+\paragraph{Cons}
+
+May be harder to read than an if statement. The condition may be
+difficult to locate if the expression is long.
+
+\paragraph{Decision}
+
+Okay to use for simple cases. Each portion must fit on one line:
+true-expression, if-expression, else-expression. Use a complete if
+statement when things get more complicated.
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Yes:}
+\NormalTok{    one\_line }\OperatorTok{=} \StringTok{\textquotesingle{}yes\textquotesingle{}} \ControlFlowTok{if}\NormalTok{ predicate(value) }\ControlFlowTok{else} \StringTok{\textquotesingle{}no\textquotesingle{}}
+\NormalTok{    slightly\_split }\OperatorTok{=}\NormalTok{ (}\StringTok{\textquotesingle{}yes\textquotesingle{}} \ControlFlowTok{if}\NormalTok{ predicate(value)}
+                      \ControlFlowTok{else} \StringTok{\textquotesingle{}no, nein, nyet\textquotesingle{}}\NormalTok{)}
+\NormalTok{    the\_longest\_ternary\_style\_that\_can\_be\_done }\OperatorTok{=}\NormalTok{ (}
+        \StringTok{\textquotesingle{}yes, true, affirmative, confirmed, correct\textquotesingle{}}
+        \ControlFlowTok{if}\NormalTok{ predicate(value)}
+        \ControlFlowTok{else} \StringTok{\textquotesingle{}no, false, negative, nay\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{No:}
+\NormalTok{    bad\_line\_breaking }\OperatorTok{=}\NormalTok{ (}\StringTok{\textquotesingle{}yes\textquotesingle{}} \ControlFlowTok{if}\NormalTok{ predicate(value) }\ControlFlowTok{else}
+                         \StringTok{\textquotesingle{}no\textquotesingle{}}\NormalTok{)}
+\NormalTok{    portion\_too\_long }\OperatorTok{=}\NormalTok{ (}\StringTok{\textquotesingle{}yes\textquotesingle{}}
+                        \ControlFlowTok{if}\NormalTok{ some\_long\_module.some\_long\_predicate\_function(}
+\NormalTok{                            really\_long\_variable\_name)}
+                        \ControlFlowTok{else} \StringTok{\textquotesingle{}no, false, negative, nay\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+\subsection{Default Argument Values}
+
+Okay in most cases.
+
+\paragraph{Definition}
+
+You can specify values for variables at the end of a function's
+parameter list, e.g., \texttt{def\ foo(a,\ b=0):}. If \texttt{foo} is
+called with only one argument, \texttt{b} is set to 0. If it is called
+with two arguments, \texttt{b} has the value of the second argument.
+
+\paragraph{Pros}
+
+Often you have a function that uses lots of default values, but on rare
+occasions you want to override the defaults. Default argument values
+provide an easy way to do this, without having to define lots of
+functions for the rare exceptions. As Python does not support overloaded
+methods/functions, default arguments are an easy way of ``faking'' the
+overloading behavior.
+
+\paragraph{Cons}
+
+Default arguments are evaluated once at module load time. This may cause
+problems if the argument is a mutable object such as a list or a
+dictionary. If the function modifies the object (e.g., by appending an
+item to a list), the default value is modified.
+
+\paragraph{Decision}
+
+Okay to use with the following caveat:
+
+Do not use mutable objects as default values in the function or method
+definition.
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Yes: }\KeywordTok{def}\NormalTok{ foo(a, b}\OperatorTok{=}\VariableTok{None}\NormalTok{):}
+         \ControlFlowTok{if}\NormalTok{ b }\KeywordTok{is} \VariableTok{None}\NormalTok{:}
+\NormalTok{             b }\OperatorTok{=}\NormalTok{ []}
+\NormalTok{Yes: }\KeywordTok{def}\NormalTok{ foo(a, b: Sequence }\OperatorTok{|} \VariableTok{None} \OperatorTok{=} \VariableTok{None}\NormalTok{):}
+         \ControlFlowTok{if}\NormalTok{ b }\KeywordTok{is} \VariableTok{None}\NormalTok{:}
+\NormalTok{             b }\OperatorTok{=}\NormalTok{ []}
+\NormalTok{Yes: }\KeywordTok{def}\NormalTok{ foo(a, b: Sequence }\OperatorTok{=}\NormalTok{ ()):  }\CommentTok{\# Empty tuple OK since tuples are immutable.}
+\NormalTok{         ...}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{from}\NormalTok{ absl }\ImportTok{import}\NormalTok{ flags}
+\NormalTok{\_FOO }\OperatorTok{=}\NormalTok{ flags.DEFINE\_string(...)}
+
+\NormalTok{No:  }\KeywordTok{def}\NormalTok{ foo(a, b}\OperatorTok{=}\NormalTok{[]):}
+\NormalTok{         ...}
+\NormalTok{No:  }\KeywordTok{def}\NormalTok{ foo(a, b}\OperatorTok{=}\NormalTok{time.time()):  }\CommentTok{\# Is \textasciigrave{}b\textasciigrave{} supposed to represent when this module was loaded?}
+\NormalTok{         ...}
+\NormalTok{No:  }\KeywordTok{def}\NormalTok{ foo(a, b}\OperatorTok{=}\NormalTok{\_FOO.value):  }\CommentTok{\# sys.argv has not yet been parsed...}
+\NormalTok{         ...}
+\NormalTok{No:  }\KeywordTok{def}\NormalTok{ foo(a, b: Mapping }\OperatorTok{=}\NormalTok{ \{\}):  }\CommentTok{\# Could still get passed to unchecked code.}
+\NormalTok{         ...}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+\subsection{Properties}
+
+Properties may be used to control getting or setting attributes that
+require trivial computations or logic. Property implementations must
+match the general expectations of regular attribute access: that they
+are cheap, straightforward, and unsurprising.
+
+\paragraph{Definition}
+
+A way to wrap method calls for getting and setting an attribute as a
+standard attribute access.
+
+\paragraph{Pros}
+
+\begin{itemize}
+\tightlist
+\item
+  Allows for an attribute access and assignment API rather than
+  \hyperref[getters-and-setters]{getter and setter} method calls.
+\item
+  Can be used to make an attribute read-only.
+\item
+  Allows calculations to be lazy.
+\item
+  Provides a way to maintain the public interface of a class when the
+  internals evolve independently of class users.
+\end{itemize}
+
+\paragraph{Cons}
+
+\begin{itemize}
+\tightlist
+\item
+  Can hide side-effects much like operator overloading.
+\item
+  Can be confusing for subclasses.
+\end{itemize}
+
+\paragraph{Decision}
+
+Properties are allowed, but, like operator overloading, should only be
+used when necessary and match the expectations of typical attribute
+access; follow the \hyperref[getters-and-setters]{getters and setters}
+rules otherwise.
+
+For example, using a property to simply both get and set an internal
+attribute isn't allowed: there is no computation occurring, so the
+property is unnecessary (\hyperref[getters-and-setters]{make the
+attribute public instead}). In comparison, using a property to control
+attribute access or to calculate a \emph{trivially} derived value is
+allowed: the logic is simple and unsurprising.
+
+Properties should be created with the \texttt{@property}
+\hyperref[s2.17-function-and-method-decorators]{decorator}. Manually
+implementing a property descriptor is considered a
+\hyperref[power-features]{power feature}.
+
+Inheritance with properties can be non-obvious. Do not use properties to
+implement computations a subclass may ever want to override and extend.
+
+\subsection{True/False Evaluations}
+
+Use the ``implicit'' false if at all possible (with a few caveats).
+
+\paragraph{Definition}
+
+Python evaluates certain values as \texttt{False} when in a boolean
+context. A quick ``rule of thumb'' is that all ``empty'' values are
+considered false, so
+\texttt{0,\ None,\ {[}{]},\ \{\},\ \textquotesingle{}\textquotesingle{}}
+all evaluate as false in a boolean context.
+
+\paragraph{Pros}
+
+Conditions using Python booleans are easier to read and less
+error-prone. In most cases, they're also faster.
+
+\paragraph{Cons}
+
+May look strange to C/C++ developers.
+
+\paragraph{Decision}
+
+Use the ``implicit'' false if possible, e.g., \texttt{if\ foo:} rather
+than \texttt{if\ foo\ !=\ {[}{]}:}. There are a few caveats that you
+should keep in mind though:
+
+\begin{itemize}
+\item
+  Always use \texttt{if\ foo\ is\ None:} (or \texttt{is\ not\ None}) to
+  check for a \texttt{None} value. E.g., when testing whether a variable
+  or argument that defaults to \texttt{None} was set to some other
+  value. The other value might be a value that's false in a boolean
+  context!
+\item
+  Never compare a boolean variable to \texttt{False} using \texttt{==}.
+  Use \texttt{if\ not\ x:} instead. If you need to distinguish
+  \texttt{False} from \texttt{None} then chain the expressions, such as
+  \texttt{if\ not\ x\ and\ x\ is\ not\ None:}.
+\item
+  For sequences (strings, lists, tuples), use the fact that empty
+  sequences are false, so \texttt{if\ seq:} and \texttt{if\ not\ seq:}
+  are preferable to \texttt{if\ len(seq):} and
+  \texttt{if\ not\ len(seq):} respectively.
+\item
+  When handling integers, implicit false may involve more risk than
+  benefit (i.e., accidentally handling \texttt{None} as 0). You may
+  compare a value which is known to be an integer (and is not the result
+  of \texttt{len()}) against the integer 0.
+
+\begin{samepage}
+  \begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Yes: }\ControlFlowTok{if} \KeywordTok{not}\NormalTok{ users:}
+         \BuiltInTok{print}\NormalTok{(}\StringTok{\textquotesingle{}no users\textquotesingle{}}\NormalTok{)}
+
+     \ControlFlowTok{if}\NormalTok{ i }\OperatorTok{\%} \DecValTok{10} \OperatorTok{==} \DecValTok{0}\NormalTok{:}
+         \VariableTok{self}\NormalTok{.handle\_multiple\_of\_ten()}
+
+     \KeywordTok{def}\NormalTok{ f(x}\OperatorTok{=}\VariableTok{None}\NormalTok{):}
+         \ControlFlowTok{if}\NormalTok{ x }\KeywordTok{is} \VariableTok{None}\NormalTok{:}
+\NormalTok{             x }\OperatorTok{=}\NormalTok{ []}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{No:  }\ControlFlowTok{if} \BuiltInTok{len}\NormalTok{(users) }\OperatorTok{==} \DecValTok{0}\NormalTok{:}
+         \BuiltInTok{print}\NormalTok{(}\StringTok{\textquotesingle{}no users\textquotesingle{}}\NormalTok{)}
+
+     \ControlFlowTok{if} \KeywordTok{not}\NormalTok{ i }\OperatorTok{\%} \DecValTok{10}\NormalTok{:}
+         \VariableTok{self}\NormalTok{.handle\_multiple\_of\_ten()}
+
+     \KeywordTok{def}\NormalTok{ f(x}\OperatorTok{=}\VariableTok{None}\NormalTok{):}
+\NormalTok{         x }\OperatorTok{=}\NormalTok{ x }\KeywordTok{or}\NormalTok{ []}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+\item
+  Note that \texttt{\textquotesingle{}0\textquotesingle{}} (i.e.,
+  \texttt{0} as string) evaluates to true.
+\item
+  Note that Numpy arrays may raise an exception in an implicit boolean
+  context. Prefer the \texttt{.size} attribute when testing emptiness of
+  a \texttt{np.array} (e.g.~\texttt{if\ not\ users.size}).
+\end{itemize}
+
+\subsection{Lexical Scoping}
+
+Okay to use.
+
+\paragraph{Definition}
+
+A nested Python function can refer to variables defined in enclosing
+functions, but cannot assign to them. Variable bindings are resolved
+using lexical scoping, that is, based on the static program text. Any
+assignment to a name in a block will cause Python to treat all
+references to that name as a local variable, even if the use precedes
+the assignment. If a global declaration occurs, the name is treated as a
+global variable.
+
+An example of the use of this feature is:
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ get\_adder(summand1: }\BuiltInTok{float}\NormalTok{) }\OperatorTok{{-}\textgreater{}}\NormalTok{ Callable[[}\BuiltInTok{float}\NormalTok{], }\BuiltInTok{float}\NormalTok{]:}
+    \CommentTok{"""Returns a function that adds numbers to a given number."""}
+    \KeywordTok{def}\NormalTok{ adder(summand2: }\BuiltInTok{float}\NormalTok{) }\OperatorTok{{-}\textgreater{}} \BuiltInTok{float}\NormalTok{:}
+        \ControlFlowTok{return}\NormalTok{ summand1 }\OperatorTok{+}\NormalTok{ summand2}
+
+    \ControlFlowTok{return}\NormalTok{ adder}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+\paragraph{Pros}
+
+Often results in clearer, more elegant code. Especially comforting to
+experienced Lisp and Scheme (and Haskell and ML and \ldots) programmers.
+
+\paragraph{Cons}
+
+Can lead to confusing bugs, such as this example based on
+\href{https://peps.python.org/pep-0227/}{PEP-0227}:
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{i }\OperatorTok{=} \DecValTok{4}
+\KeywordTok{def}\NormalTok{ foo(x: Iterable[}\BuiltInTok{int}\NormalTok{]):}
+    \KeywordTok{def}\NormalTok{ bar():}
+        \BuiltInTok{print}\NormalTok{(i, end}\OperatorTok{=}\StringTok{\textquotesingle{}\textquotesingle{}}\NormalTok{)}
+    \CommentTok{\# ...}
+    \CommentTok{\# A bunch of code here}
+    \CommentTok{\# ...}
+    \ControlFlowTok{for}\NormalTok{ i }\KeywordTok{in}\NormalTok{ x:  }\CommentTok{\# Ah, i *is* local to foo, so this is what bar sees}
+        \BuiltInTok{print}\NormalTok{(i, end}\OperatorTok{=}\StringTok{\textquotesingle{}\textquotesingle{}}\NormalTok{)}
+\NormalTok{    bar()}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+So \texttt{foo({[}1,\ 2,\ 3{]})} will print \texttt{1\ 2\ 3\ 3}, not
+\texttt{1\ 2\ 3\ 4}.
+
+\paragraph{Decision}
+
+Okay to use.
+
+\subsection{Function and Method Decorators}
+
+Use decorators judiciously when there is a clear advantage. Avoid
+\texttt{staticmethod} and limit use of \texttt{classmethod}.
+
+\paragraph{Definition}
+
+\href{https://docs.python.org/3/glossary.html\#term-decorator}{Decorators
+for Functions and Methods} (a.k.a ``the \texttt{@} notation''). One
+common decorator is \texttt{@property}, used for converting ordinary
+methods into dynamically computed attributes. However, the decorator
+syntax allows for user-defined decorators as well. Specifically, for
+some function \texttt{my\_decorator}, this:
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{class}\NormalTok{ C:}
+    \AttributeTok{@my\_decorator}
+    \KeywordTok{def}\NormalTok{ method(}\VariableTok{self}\NormalTok{):}
+        \CommentTok{\# method body ...}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+is equivalent to:
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{class}\NormalTok{ C:}
+    \KeywordTok{def}\NormalTok{ method(}\VariableTok{self}\NormalTok{):}
+        \CommentTok{\# method body ...}
+\NormalTok{    method }\OperatorTok{=}\NormalTok{ my\_decorator(method)}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+\paragraph{Pros}
+
+Elegantly specifies some transformation on a method; the transformation
+might eliminate some repetitive code, enforce invariants, etc.
+
+\paragraph{Cons}
+
+Decorators can perform arbitrary operations on a function's arguments or
+return values, resulting in surprising implicit behavior. Additionally,
+decorators execute at object definition time. For module-level objects
+(classes, module functions, \ldots) this happens at import time.
+Failures in decorator code are pretty much impossible to recover from.
+
+\paragraph{Decision}
+
+Use decorators judiciously when there is a clear advantage. Decorators
+should follow the same import and naming guidelines as functions.
+Decorator pydoc should clearly state that the function is a decorator.
+Write unit tests for decorators.
+
+Avoid external dependencies in the decorator itself (e.g.~don't rely on
+files, sockets, database connections, etc.), since they might not be
+available when the decorator runs (at import time, perhaps from
+\texttt{pydoc} or other tools). A decorator that is called with valid
+parameters should (as much as possible) be guaranteed to succeed in all
+cases.
+
+Decorators are a special case of ``top-level code'' - see
+\hyperref[s3.17-main]{main} for more discussion.
+
+Never use \texttt{staticmethod} unless forced to in order to integrate
+with an API defined in an existing library. Write a module-level
+function instead.
+
+Use \texttt{classmethod} only when writing a named constructor, or a
+class-specific routine that modifies necessary global state such as a
+process-wide cache.
+
+\subsection{Threading}
+
+Do not rely on the atomicity of built-in types.
+
+While Python's built-in data types such as dictionaries appear to have
+atomic operations, there are corner cases where they aren't atomic
+(e.g.~if \texttt{\_\_hash\_\_} or \texttt{\_\_eq\_\_} are implemented as
+Python methods) and their atomicity should not be relied upon. Neither
+should you rely on atomic variable assignment (since this in turn
+depends on dictionaries).
+
+Use the \texttt{queue} module's \texttt{Queue} data type as the
+preferred way to communicate data between threads. Otherwise, use the
+\texttt{threading} module and its locking primitives. Prefer condition
+variables and \texttt{threading.Condition} instead of using lower-level
+locks.
+
+\subsection{Power} Features
+
+Avoid these features.
+
+\paragraph{Definition}
+
+Python is an extremely flexible language and gives you many fancy
+features such as custom metaclasses, access to bytecode, on-the-fly
+compilation, dynamic inheritance, object reparenting, import hacks,
+reflection (e.g.~some uses of \texttt{getattr()}), modification of
+system internals, \texttt{\_\_del\_\_} methods implementing customized
+cleanup, etc.
+
+\paragraph{Pros}
+
+These are powerful language features. They can make your code more
+compact.
+
+\paragraph{Cons}
+
+It's very tempting to use these ``cool'' features when they're not
+absolutely necessary. It's harder to read, understand, and debug code
+that's using unusual features underneath. It doesn't seem that way at
+first (to the original author), but when revisiting the code, it tends
+to be more difficult than code that is longer but is straightforward.
+
+\paragraph{Decision}
+
+Avoid these features in your code.
+
+Standard library modules and classes that internally use these features
+are okay to use (for example, \texttt{abc.ABCMeta},
+\texttt{dataclasses}, and \texttt{enum}).
+
+\subsection{Modern} Python: from \_\_future\_\_ imports
+
+New language version semantic changes may be gated behind a special
+future import to enable them on a per-file basis within earlier
+runtimes.
+
+\paragraph{Definition}
+
+Being able to turn on some of the more modern features via
+\texttt{from\ \_\_future\_\_\ import} statements allows early use of
+features from expected future Python versions.
+
+\paragraph{Pros}
+
+This has proven to make runtime version upgrades smoother as changes can
+be made on a per-file basis while declaring compatibility and preventing
+regressions within those files. Modern code is more maintainable as it
+is less likely to accumulate technical debt that will be problematic
+during future runtime upgrades.
+
+\paragraph{Cons}
+
+Such code may not work on very old interpreter versions prior to the
+introduction of the needed future statement. The need for this is more
+common in projects supporting an extremely wide variety of environments.
+
+\paragraph{Decision}
+
+\subparagraph{from \_\_future\_\_
+imports}\label{from-__future__-imports}
+
+Use of \texttt{from\ \_\_future\_\_\ import} statements is encouraged.
+It allows a given source file to start using more modern Python syntax
+features today. Once you no longer need to run on a version where the
+features are hidden behind a \texttt{\_\_future\_\_} import, feel free
+to remove those lines.
+
+In code that may execute on versions as old as 3.5 rather than
+\textgreater= 3.7, import:
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{from}\NormalTok{ \_\_future\_\_ }\ImportTok{import}\NormalTok{ generator\_stop}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+For more information read the
+\href{https://docs.python.org/3/library/__future__.html}{Python future
+statement definitions} documentation.
+
+Please don't remove these imports until you are confident the code is
+only ever used in a sufficiently modern environment. Even if you do not
+currently use the feature a specific future import enables in your code
+today, keeping it in place in the file prevents later modifications of
+the code from inadvertently depending on the older behavior.
+
+Use other \texttt{from\ \_\_future\_\_} import statements as you see
+fit.
+
+\subsection{Type Annotated Code}
+
+You can annotate Python code with type hints according to
+\href{https://peps.python.org/pep-0484/}{PEP-484}, and type-check the
+code at build time with a type checking tool like
+\href{https://github.com/google/pytype}{pytype}.
+
+Type annotations can be in the source or in a
+\href{https://peps.python.org/pep-0484/\#stub-files}{stub pyi file}.
+Whenever possible, annotations should be in the source. Use pyi files
+for third-party or extension modules.
+
+\paragraph{Definition}
+
+Type annotations (or ``type hints'') are for function or method
+arguments and return values:
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ func(a: }\BuiltInTok{int}\NormalTok{) }\OperatorTok{{-}\textgreater{}} \BuiltInTok{list}\NormalTok{[}\BuiltInTok{int}\NormalTok{]:}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+You can also declare the type of a variable using similar
+\href{https://peps.python.org/pep-0526/}{PEP-526} syntax:
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{a: SomeType }\OperatorTok{=}\NormalTok{ some\_func()}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+\paragraph{Pros}
+
+Type annotations improve the readability and maintainability of your
+code. The type checker will convert many runtime errors to build-time
+errors, and reduce your ability to use \hyperref[power-features]{Power
+Features}.
+
+\paragraph{Cons}
+
+You will have to keep the type declarations up to date. You might see
+type errors that you think are valid code. Use of a
+\href{https://github.com/google/pytype}{type checker} may reduce your
+ability to use \hyperref[power-features]{Power Features}.
+
+\paragraph{Decision}
+
+You are strongly encouraged to enable Python type analysis when updating
+code. When adding or modifying public APIs, include type annotations and
+enable checking via pytype in the build system. As static analysis is
+relatively new to Python, we acknowledge that undesired side-effects
+(such as wrongly inferred types) may prevent adoption by some projects.
+In those situations, authors are encouraged to add a comment with a TODO
+or link to a bug describing the issue(s) currently preventing type
+annotation adoption in the BUILD file or in the code itself as
+appropriate.
+
+\section{Python Style Rules}
+
+\subsection{Semicolons}
+
+Do not terminate your lines with semicolons, and do not use semicolons
+to put two statements on the same line.
+
+\subsection{Line} length
+
+Maximum line length is \emph{80 characters}.
+
+Explicit exceptions to the 80 character limit:
+
+\begin{itemize}
+\tightlist
+\item
+  Long import statements.
+\item
+  URLs, pathnames, or long flags in comments.
+\item
+  Long string module-level constants not containing whitespace that
+  would be inconvenient to split across lines such as URLs or pathnames.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Pylint disable comments. (e.g.:
+    \texttt{\#\ pylint:\ disable=invalid-name})
+  \end{itemize}
+\end{itemize}
+
+Do not use a backslash for
+\href{https://docs.python.org/3/reference/lexical_analysis.html\#explicit-line-joining}{explicit
+line continuation}.
+
+Instead, make use of Python's
+\href{http://docs.python.org/reference/lexical_analysis.html\#implicit-line-joining}{implicit
+line joining inside parentheses, brackets and braces}. If necessary, you
+can add an extra pair of parentheses around an expression.
+
+Note that this rule doesn't prohibit backslash-escaped newlines within
+strings (see \hyperref[strings]{below}).
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Yes: foo\_bar(}\VariableTok{self}\NormalTok{, width, height, color}\OperatorTok{=}\StringTok{\textquotesingle{}black\textquotesingle{}}\NormalTok{, design}\OperatorTok{=}\VariableTok{None}\NormalTok{, x}\OperatorTok{=}\StringTok{\textquotesingle{}foo\textquotesingle{}}\NormalTok{,}
+\NormalTok{             emphasis}\OperatorTok{=}\VariableTok{None}\NormalTok{, highlight}\OperatorTok{=}\DecValTok{0}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+
+\NormalTok{Yes: }\ControlFlowTok{if}\NormalTok{ (width }\OperatorTok{==} \DecValTok{0} \KeywordTok{and}\NormalTok{ height }\OperatorTok{==} \DecValTok{0} \KeywordTok{and}
+\NormalTok{         color }\OperatorTok{==} \StringTok{\textquotesingle{}red\textquotesingle{}} \KeywordTok{and}\NormalTok{ emphasis }\OperatorTok{==} \StringTok{\textquotesingle{}strong\textquotesingle{}}\NormalTok{):}
+
+\NormalTok{     (bridge\_questions.clarification\_on}
+\NormalTok{      .average\_airspeed\_of.unladen\_swallow) }\OperatorTok{=} \StringTok{\textquotesingle{}African or European?\textquotesingle{}}
+
+     \ControlFlowTok{with}\NormalTok{ (}
+\NormalTok{         very\_long\_first\_expression\_function() }\ImportTok{as}\NormalTok{ spam,}
+\NormalTok{         very\_long\_second\_expression\_function() }\ImportTok{as}\NormalTok{ beans,}
+\NormalTok{         third\_thing() }\ImportTok{as}\NormalTok{ eggs,}
+\NormalTok{     ):}
+\NormalTok{       place\_order(eggs, beans, spam, beans)}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+
+\NormalTok{No:  }\ControlFlowTok{if}\NormalTok{ width }\OperatorTok{==} \DecValTok{0} \KeywordTok{and}\NormalTok{ height }\OperatorTok{==} \DecValTok{0} \KeywordTok{and} \OperatorTok{\textbackslash{}}
+\NormalTok{         color }\OperatorTok{==} \StringTok{\textquotesingle{}red\textquotesingle{}} \KeywordTok{and}\NormalTok{ emphasis }\OperatorTok{==} \StringTok{\textquotesingle{}strong\textquotesingle{}}\NormalTok{:}
+
+\NormalTok{     bridge\_questions.clarification\_on }\OperatorTok{\textbackslash{}}
+\NormalTok{         .average\_airspeed\_of.unladen\_swallow }\OperatorTok{=} \StringTok{\textquotesingle{}African or European?\textquotesingle{}}
+
+     \ControlFlowTok{with}\NormalTok{ very\_long\_first\_expression\_function() }\ImportTok{as}\NormalTok{ spam, }\OperatorTok{\textbackslash{}}
+\NormalTok{           very\_long\_second\_expression\_function() }\ImportTok{as}\NormalTok{ beans, }\OperatorTok{\textbackslash{}}
+\NormalTok{           third\_thing() }\ImportTok{as}\NormalTok{ eggs:}
+\NormalTok{       place\_order(eggs, beans, spam, beans)}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+When a literal string won't fit on a single line, use parentheses for
+implicit line joining.
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OperatorTok{=}\NormalTok{ (}\StringTok{\textquotesingle{}This will build a very long long \textquotesingle{}}
+     \StringTok{\textquotesingle{}long long long long long long string\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+Prefer to break lines at the highest possible syntactic level. If you
+must break a line twice, break it at the same syntactic level both
+times.
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Yes: bridgekeeper.answer(}
+\NormalTok{         name}\OperatorTok{=}\StringTok{"Arthur"}\NormalTok{, quest}\OperatorTok{=}\NormalTok{questlib.find(owner}\OperatorTok{=}\StringTok{"Arthur"}\NormalTok{, perilous}\OperatorTok{=}\VariableTok{True}\NormalTok{))}
+
+\NormalTok{     answer }\OperatorTok{=}\NormalTok{ (a\_long\_line().of\_chained\_methods()}
+\NormalTok{               .that\_eventually\_provides().an\_answer())}
+
+     \ControlFlowTok{if}\NormalTok{ (}
+\NormalTok{         config }\KeywordTok{is} \VariableTok{None}
+         \KeywordTok{or} \StringTok{\textquotesingle{}editor.language\textquotesingle{}} \KeywordTok{not} \KeywordTok{in}\NormalTok{ config}
+         \KeywordTok{or}\NormalTok{ config[}\StringTok{\textquotesingle{}editor.language\textquotesingle{}}\NormalTok{].use\_spaces }\KeywordTok{is} \VariableTok{False}
+\NormalTok{     ):}
+\NormalTok{       use\_tabs()}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{No: bridgekeeper.answer(name}\OperatorTok{=}\StringTok{"Arthur"}\NormalTok{, quest}\OperatorTok{=}\NormalTok{questlib.find(}
+\NormalTok{        owner}\OperatorTok{=}\StringTok{"Arthur"}\NormalTok{, perilous}\OperatorTok{=}\VariableTok{True}\NormalTok{))}
+
+\NormalTok{    answer }\OperatorTok{=}\NormalTok{ a\_long\_line().of\_chained\_methods().that\_eventually\_provides(}
+\NormalTok{        ).an\_answer()}
+
+    \ControlFlowTok{if}\NormalTok{ (config }\KeywordTok{is} \VariableTok{None} \KeywordTok{or} \StringTok{\textquotesingle{}editor.language\textquotesingle{}} \KeywordTok{not} \KeywordTok{in}\NormalTok{ config }\KeywordTok{or}\NormalTok{ config[}
+        \StringTok{\textquotesingle{}editor.language\textquotesingle{}}\NormalTok{].use\_spaces }\KeywordTok{is} \VariableTok{False}\NormalTok{):}
+\NormalTok{      use\_tabs()}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+Within comments, put long URLs on their own line if necessary.
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Yes:  }\CommentTok{\# See details at}
+      \CommentTok{\# http://www.example.com/us/developer/documentation/api/content/v2.0/csv\_file\_name\_extension\_full\_specification.html}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{No:  }\CommentTok{\# See details at}
+     \CommentTok{\# http://www.example.com/us/developer/documentation/api/content/\textbackslash{}}
+     \CommentTok{\# v2.0/csv\_file\_name\_extension\_full\_specification.html}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+Make note of the indentation of the elements in the line continuation
+examples above; see the \hyperref[s3.4-indentation]{indentation} section
+for explanation.
+
+In all other cases where a line exceeds 80 characters, and the
+\href{https://github.com/psf/black}{Black} or
+\href{https://github.com/google/pyink}{Pyink} auto-formatter does not
+help bring the line below the limit, the line is allowed to exceed this
+maximum. Authors are encouraged to manually break the line up per the
+notes above when it is sensible.
+
+\subsection{Parentheses}
+
+Use parentheses sparingly.
+
+It is fine, though not required, to use parentheses around tuples. Do
+not use them in return statements or conditional statements unless using
+parentheses for implied line continuation or to indicate a tuple.
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Yes: }\ControlFlowTok{if}\NormalTok{ foo:}
+\NormalTok{         bar()}
+     \ControlFlowTok{while}\NormalTok{ x:}
+\NormalTok{         x }\OperatorTok{=}\NormalTok{ bar()}
+     \ControlFlowTok{if}\NormalTok{ x }\KeywordTok{and}\NormalTok{ y:}
+\NormalTok{         bar()}
+     \ControlFlowTok{if} \KeywordTok{not}\NormalTok{ x:}
+\NormalTok{         bar()}
+     \CommentTok{\# For a 1 item tuple the ()s are more visually obvious than the comma.}
+\NormalTok{     onesie }\OperatorTok{=}\NormalTok{ (foo,)}
+     \ControlFlowTok{return}\NormalTok{ foo}
+     \ControlFlowTok{return}\NormalTok{ spam, beans}
+     \ControlFlowTok{return}\NormalTok{ (spam, beans)}
+     \ControlFlowTok{for}\NormalTok{ (x, y) }\KeywordTok{in} \BuiltInTok{dict}\NormalTok{.items(): ...}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{No:  }\ControlFlowTok{if}\NormalTok{ (x):}
+\NormalTok{         bar()}
+     \ControlFlowTok{if} \KeywordTok{not}\NormalTok{(x):}
+\NormalTok{         bar()}
+     \ControlFlowTok{return}\NormalTok{ (foo)}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+\subsection{Indentation}
+
+Indent your code blocks with \emph{4 spaces}.
+
+Never use tabs. Implied line continuation should align wrapped elements
+vertically (see \hyperref[s3.2-line-length]{line length examples}), or
+use a hanging 4-space indent. Closing (round, square or curly) brackets
+can be placed at the end of the expression, or on separate lines, but
+then should be indented the same as the line with the corresponding
+opening bracket.
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Yes:   }\CommentTok{\# Aligned with opening delimiter.}
+\NormalTok{       foo }\OperatorTok{=}\NormalTok{ long\_function\_name(var\_one, var\_two,}
+\NormalTok{                                var\_three, var\_four)}
+\NormalTok{       meal }\OperatorTok{=}\NormalTok{ (spam,}
+\NormalTok{               beans)}
+
+       \CommentTok{\# Aligned with opening delimiter in a dictionary.}
+\NormalTok{       foo }\OperatorTok{=}\NormalTok{ \{}
+           \StringTok{\textquotesingle{}long\_dictionary\_key\textquotesingle{}}\NormalTok{: value1 }\OperatorTok{+}
+\NormalTok{                                  value2,}
+\NormalTok{           ...}
+\NormalTok{       \}}
+
+       \CommentTok{\# 4{-}space hanging indent; nothing on first line.}
+\NormalTok{       foo }\OperatorTok{=}\NormalTok{ long\_function\_name(}
+\NormalTok{           var\_one, var\_two, var\_three,}
+\NormalTok{           var\_four)}
+\NormalTok{       meal }\OperatorTok{=}\NormalTok{ (}
+\NormalTok{           spam,}
+\NormalTok{           beans)}
+
+       \CommentTok{\# 4{-}space hanging indent; nothing on first line,}
+       \CommentTok{\# closing parenthesis on a new line.}
+\NormalTok{       foo }\OperatorTok{=}\NormalTok{ long\_function\_name(}
+\NormalTok{           var\_one, var\_two, var\_three,}
+\NormalTok{           var\_four}
+\NormalTok{       )}
+\NormalTok{       meal }\OperatorTok{=}\NormalTok{ (}
+\NormalTok{           spam,}
+\NormalTok{           beans,}
+\NormalTok{       )}
+
+       \CommentTok{\# 4{-}space hanging indent in a dictionary.}
+\NormalTok{       foo }\OperatorTok{=}\NormalTok{ \{}
+           \StringTok{\textquotesingle{}long\_dictionary\_key\textquotesingle{}}\NormalTok{:}
+\NormalTok{               long\_dictionary\_value,}
+\NormalTok{           ...}
+\NormalTok{       \}}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{No:    }\CommentTok{\# Stuff on first line forbidden.}
+\NormalTok{       foo }\OperatorTok{=}\NormalTok{ long\_function\_name(var\_one, var\_two,}
+\NormalTok{           var\_three, var\_four)}
+\NormalTok{       meal }\OperatorTok{=}\NormalTok{ (spam,}
+\NormalTok{           beans)}
+
+       \CommentTok{\# 2{-}space hanging indent forbidden.}
+\NormalTok{       foo }\OperatorTok{=}\NormalTok{ long\_function\_name(}
+\NormalTok{         var\_one, var\_two, var\_three,}
+\NormalTok{         var\_four)}
+
+       \CommentTok{\# No hanging indent in a dictionary.}
+\NormalTok{       foo }\OperatorTok{=}\NormalTok{ \{}
+           \StringTok{\textquotesingle{}long\_dictionary\_key\textquotesingle{}}\NormalTok{:}
+\NormalTok{           long\_dictionary\_value,}
+\NormalTok{           ...}
+\NormalTok{       \}}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+\paragraph{Trailing commas in sequences of items?}
+
+Trailing commas in sequences of items are recommended only when the
+closing container token \texttt{{]}}, \texttt{)}, or \texttt{\}} does
+not appear on the same line as the final element, as well as for tuples
+with a single element. The presence of a trailing comma is also used as
+a hint to our Python code auto-formatter
+\href{https://github.com/psf/black}{Black} or
+\href{https://github.com/google/pyink}{Pyink} to direct it to
+auto-format the container of items to one item per line when the
+\texttt{,} after the final element is present.
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Yes:   golomb3 }\OperatorTok{=}\NormalTok{ [}\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{3}\NormalTok{]}
+\NormalTok{       golomb4 }\OperatorTok{=}\NormalTok{ [}
+           \DecValTok{0}\NormalTok{,}
+           \DecValTok{1}\NormalTok{,}
+           \DecValTok{4}\NormalTok{,}
+           \DecValTok{6}\NormalTok{,}
+\NormalTok{       ]}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{No:    golomb4 }\OperatorTok{=}\NormalTok{ [}
+           \DecValTok{0}\NormalTok{,}
+           \DecValTok{1}\NormalTok{,}
+           \DecValTok{4}\NormalTok{,}
+           \DecValTok{6}\NormalTok{,]}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+\subsection{Blank Lines}
+
+Two blank lines between top-level definitions, be they function or class
+definitions. One blank line between method definitions and between the
+docstring of a \texttt{class} and the first method. No blank line
+following a \texttt{def} line. Use single blank lines as you judge
+appropriate within functions or methods.
+
+Blank lines need not be anchored to the definition. For example, related
+comments immediately preceding function, class, and method definitions
+can make sense. Consider if your comment might be more useful as part of
+the docstring.
+
+\subsection{Whitespace}
+
+Follow standard typographic rules for the use of spaces around
+punctuation.
+
+No whitespace inside parentheses, brackets or braces.
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Yes: spam(ham[}\DecValTok{1}\NormalTok{], \{}\StringTok{\textquotesingle{}eggs\textquotesingle{}}\NormalTok{: }\DecValTok{2}\NormalTok{\}, [])}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{No:  spam( ham[ }\DecValTok{1}\NormalTok{ ], \{ }\StringTok{\textquotesingle{}eggs\textquotesingle{}}\NormalTok{: }\DecValTok{2}\NormalTok{ \}, [ ] )}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+No whitespace before a comma, semicolon, or colon. Do use whitespace
+after a comma, semicolon, or colon, except at the end of the line.
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Yes: }\ControlFlowTok{if}\NormalTok{ x }\OperatorTok{==} \DecValTok{4}\NormalTok{:}
+         \BuiltInTok{print}\NormalTok{(x, y)}
+\NormalTok{     x, y }\OperatorTok{=}\NormalTok{ y, x}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{No:  }\ControlFlowTok{if}\NormalTok{ x }\OperatorTok{==} \DecValTok{4}\NormalTok{ :}
+         \BuiltInTok{print}\NormalTok{(x , y)}
+\NormalTok{     x , y }\OperatorTok{=}\NormalTok{ y , x}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+No whitespace before the open paren/bracket that starts an argument
+list, indexing or slicing.
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Yes: spam(}\DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{No:  spam (}\DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Yes: }\BuiltInTok{dict}\NormalTok{[}\StringTok{\textquotesingle{}key\textquotesingle{}}\NormalTok{] }\OperatorTok{=} \BuiltInTok{list}\NormalTok{[index]}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{No:  }\BuiltInTok{dict}\NormalTok{ [}\StringTok{\textquotesingle{}key\textquotesingle{}}\NormalTok{] }\OperatorTok{=} \BuiltInTok{list}\NormalTok{ [index]}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+No trailing whitespace.
+
+Surround binary operators with a single space on either side for
+assignment (\texttt{=}), comparisons
+(\texttt{==,\ \textless{},\ \textgreater{},\ !=,\ \textless{}\textgreater{},\ \textless{}=,\ \textgreater{}=,\ in,\ not\ in,\ is,\ is\ not}),
+and Booleans (\texttt{and,\ or,\ not}). Use your better judgment for the
+insertion of spaces around arithmetic operators (\texttt{+}, \texttt{-},
+\texttt{*}, \texttt{/}, \texttt{//}, \texttt{\%}, \texttt{**},
+\texttt{@}).
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Yes: x }\OperatorTok{==} \DecValTok{1}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{No:  x}\OperatorTok{\textless{}}\DecValTok{1}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+Never use spaces around \texttt{=} when passing keyword arguments or
+defining a default parameter value, with one exception:
+\hyperref[typing-default-values]{when a type annotation is present},
+\emph{do} use spaces around the \texttt{=} for the default parameter
+value.
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Yes: }\KeywordTok{def} \BuiltInTok{complex}\NormalTok{(real, imag}\OperatorTok{=}\FloatTok{0.0}\NormalTok{): }\ControlFlowTok{return}\NormalTok{ Magic(r}\OperatorTok{=}\NormalTok{real, i}\OperatorTok{=}\NormalTok{imag)}
+\NormalTok{Yes: }\KeywordTok{def} \BuiltInTok{complex}\NormalTok{(real, imag: }\BuiltInTok{float} \OperatorTok{=} \FloatTok{0.0}\NormalTok{): }\ControlFlowTok{return}\NormalTok{ Magic(r}\OperatorTok{=}\NormalTok{real, i}\OperatorTok{=}\NormalTok{imag)}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{No:  }\KeywordTok{def} \BuiltInTok{complex}\NormalTok{(real, imag }\OperatorTok{=} \FloatTok{0.0}\NormalTok{): }\ControlFlowTok{return}\NormalTok{ Magic(r }\OperatorTok{=}\NormalTok{ real, i }\OperatorTok{=}\NormalTok{ imag)}
+\NormalTok{No:  }\KeywordTok{def} \BuiltInTok{complex}\NormalTok{(real, imag: }\BuiltInTok{float}\OperatorTok{=}\FloatTok{0.0}\NormalTok{): }\ControlFlowTok{return}\NormalTok{ Magic(r }\OperatorTok{=}\NormalTok{ real, i }\OperatorTok{=}\NormalTok{ imag)}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+Don't use spaces to vertically align tokens on consecutive lines, since
+it becomes a maintenance burden (applies to \texttt{:}, \texttt{\#},
+\texttt{=}, etc.):
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Yes:}
+\NormalTok{  foo }\OperatorTok{=} \DecValTok{1000}  \CommentTok{\# comment}
+\NormalTok{  long\_name }\OperatorTok{=} \DecValTok{2}  \CommentTok{\# comment that should not be aligned}
+
+\NormalTok{  dictionary }\OperatorTok{=}\NormalTok{ \{}
+      \StringTok{\textquotesingle{}foo\textquotesingle{}}\NormalTok{: }\DecValTok{1}\NormalTok{,}
+      \StringTok{\textquotesingle{}long\_name\textquotesingle{}}\NormalTok{: }\DecValTok{2}\NormalTok{,}
+\NormalTok{  \}}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{No:}
+\NormalTok{  foo       }\OperatorTok{=} \DecValTok{1000}  \CommentTok{\# comment}
+\NormalTok{  long\_name }\OperatorTok{=} \DecValTok{2}     \CommentTok{\# comment that should not be aligned}
+
+\NormalTok{  dictionary }\OperatorTok{=}\NormalTok{ \{}
+      \StringTok{\textquotesingle{}foo\textquotesingle{}}\NormalTok{      : }\DecValTok{1}\NormalTok{,}
+      \StringTok{\textquotesingle{}long\_name\textquotesingle{}}\NormalTok{: }\DecValTok{2}\NormalTok{,}
+\NormalTok{  \}}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+\subsection{Shebang Line}
+
+Most \texttt{.py} files do not need to start with a \texttt{\#!} line.
+Start the main file of a program with \texttt{\#!/usr/bin/env\ python3}
+(to support virtualenvs) or \texttt{\#!/usr/bin/python3} per
+\href{https://peps.python.org/pep-0394/}{PEP-394}.
+
+This line is used by the kernel to find the Python interpreter, but is
+ignored by Python when importing modules. It is only necessary on a file
+intended to be executed directly.
+
+\subsection{Comments and Docstrings}
+
+Be sure to use the right style for module, function, method docstrings
+and inline comments.
+
+\paragraph{Docstrings}
+
+Python uses \emph{docstrings} to document code. A docstring is a string
+that is the first statement in a package, module, class or function.
+These strings can be extracted automatically through the
+\texttt{\_\_doc\_\_} member of the object and are used by
+\texttt{pydoc}. (Try running \texttt{pydoc} on your module to see how it
+looks.) Always use the three-double-quote \texttt{"""} format for
+docstrings (per \href{https://peps.python.org/pep-0257/}{PEP 257}). A
+docstring should be organized as a summary line (one physical line not
+exceeding 80 characters) terminated by a period, question mark, or
+exclamation point. When writing more (encouraged), this must be followed
+by a blank line, followed by the rest of the docstring starting at the
+same cursor position as the first quote of the first line. There are
+more formatting guidelines for docstrings below.
+
+\paragraph{Modules}
+
+Every file should contain license boilerplate. Choose the appropriate
+boilerplate for the license used by the project (for example, Apache
+2.0, BSD, LGPL, GPL).
+
+Files should start with a docstring describing the contents and usage of
+the module.
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{"""A one{-}line summary of the module or program, terminated by a period.}
+
+\CommentTok{Leave one blank line.  The rest of this docstring should contain an}
+\CommentTok{overall description of the module or program.  Optionally, it may also}
+\CommentTok{contain a brief description of exported classes and functions and/or usage}
+\CommentTok{examples.}
+
+\CommentTok{Typical usage example:}
+
+\CommentTok{  foo = ClassFoo()}
+\CommentTok{  bar = foo.FunctionBar()}
+\CommentTok{"""}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+\subparagraph{Test modules}
+
+Module-level docstrings for test files are not required. They should be
+included only when there is additional information that can be provided.
+
+Examples include some specifics on how the test should be run, an
+explanation of an unusual setup pattern, dependency on the external
+environment, and so on.
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{"""This blaze test uses golden files.}
+
+\CommentTok{You can update those files by running}
+\CommentTok{\textasciigrave{}blaze run //foo/bar:foo\_test {-}{-} {-}{-}update\_golden\_files\textasciigrave{} from the \textasciigrave{}google3\textasciigrave{}}
+\CommentTok{directory.}
+\CommentTok{"""}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+Docstrings that do not provide any new information should not be used.
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{"""Tests for foo.bar."""}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+\paragraph{Functions and Methods}
+
+In this section, ``function'' means a method, function, generator, or
+property.
+
+A docstring is mandatory for every function that has one or more of the
+following properties:
+
+\begin{itemize}
+\tightlist
+\item
+  being part of the public API
+\item
+  nontrivial size
+\item
+  non-obvious logic
+\end{itemize}
+
+A docstring should give enough information to write a call to the
+function without reading the function's code. The docstring should
+describe the function's calling syntax and its semantics, but generally
+not its implementation details, unless those details are relevant to how
+the function is to be used. For example, a function that mutates one of
+its arguments as a side effect should note that in its docstring.
+Otherwise, subtle but important details of a function's implementation
+that are not relevant to the caller are better expressed as comments
+alongside the code than within the function's docstring.
+
+The docstring may be descriptive-style
+(\texttt{"""Fetches\ rows\ from\ a\ Bigtable."""}) or imperative-style
+(\texttt{"""Fetch\ rows\ from\ a\ Bigtable."""}), but the style should
+be consistent within a file. The docstring for a \texttt{@property} data
+descriptor should use the same style as the docstring for an attribute
+or a function argument (\texttt{"""The\ Bigtable\ path."""}, rather than
+\texttt{"""Returns\ the\ Bigtable\ path."""}).
+
+Certain aspects of a function should be documented in special sections,
+listed below. Each section begins with a heading line, which ends with a
+colon. All sections other than the heading should maintain a hanging
+indent of two or four spaces (be consistent within a file). These
+sections can be omitted in cases where the function's name and signature
+are informative enough that it can be aptly described using a one-line
+docstring.
+
+\hyperref[doc-function-args]{\emph{Args:}} : List each parameter by
+name. A description should follow the name, and be separated by a colon
+followed by either a space or newline. If the description is too long to
+fit on a single 80-character line, use a hanging indent of 2 or 4 spaces
+more than the parameter name (be consistent with the rest of the
+docstrings in the file). The description should include required type(s)
+if the code does not contain a corresponding type annotation. If a
+function accepts \texttt{*foo} (variable length argument lists) and/or
+\texttt{**bar} (arbitrary keyword arguments), they should be listed as
+\texttt{*foo} and \texttt{**bar}.
+
+\hyperref[doc-function-returns]{\emph{Returns:} (or \emph{Yields:} for
+generators)} : Describe the semantics of the return value, including any
+type information that the type annotation does not provide. If the
+function only returns None, this section is not required. It may also be
+omitted if the docstring starts with ``Return'', ``Returns'', ``Yield'',
+or ``Yields''
+(e.g.~\texttt{"""Returns\ row\ \ \ \ \ from\ Bigtable\ as\ a\ tuple\ of\ strings."""})
+\emph{and} the opening sentence is sufficient to describe the return
+value. Do not imitate older `NumPy style'
+(\href{https://numpy.org/doc/1.24/reference/generated/numpy.linalg.qr.html}{example}),
+which frequently documented a tuple return value as if it were multiple
+return values with individual names (never mentioning the tuple).
+Instead, describe such a return value as: ``Returns: A tuple (mat\_a,
+mat\_b), where mat\_a is \ldots, and \ldots{}''. The auxiliary names in
+the docstring need not necessarily correspond to any internal names used
+in the function body (as those are not part of the API). If the function
+uses \texttt{yield} (is a generator), the \texttt{Yields:} section
+should document the object returned by \texttt{next()}, instead of the
+generator object itself that the call evaluates to.
+
+\hyperref[doc-function-raises]{\emph{Raises:}} : List all exceptions
+that are relevant to the interface followed by a description. Use a
+similar exception name + colon + space or newline and hanging indent
+style as described in \emph{Args:}. You should not document exceptions
+that get raised if the API specified in the docstring is violated
+(because this would paradoxically make behavior under violation of the
+API part of the API).
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ fetch\_smalltable\_rows(}
+\NormalTok{    table\_handle: smalltable.Table,}
+\NormalTok{    keys: Sequence[}\BuiltInTok{bytes} \OperatorTok{|} \BuiltInTok{str}\NormalTok{],}
+\NormalTok{    require\_all\_keys: }\BuiltInTok{bool} \OperatorTok{=} \VariableTok{False}\NormalTok{,}
+\NormalTok{) }\OperatorTok{{-}\textgreater{}}\NormalTok{ Mapping[}\BuiltInTok{bytes}\NormalTok{, }\BuiltInTok{tuple}\NormalTok{[}\BuiltInTok{str}\NormalTok{, ...]]:}
+    \CommentTok{"""Fetches rows from a Smalltable.}
+
+\CommentTok{    Retrieves rows pertaining to the given keys from the Table instance}
+\CommentTok{    represented by table\_handle.  String keys will be UTF{-}8 encoded.}
+
+\CommentTok{    Args:}
+\CommentTok{        table\_handle: An open smalltable.Table instance.}
+\CommentTok{        keys: A sequence of strings representing the key of each table}
+\CommentTok{          row to fetch.  String keys will be UTF{-}8 encoded.}
+\CommentTok{        require\_all\_keys: If True only rows with values set for all keys will be}
+\CommentTok{          returned.}
+
+\CommentTok{    Returns:}
+\CommentTok{        A dict mapping keys to the corresponding table row data}
+\CommentTok{        fetched. Each row is represented as a tuple of strings. For}
+\CommentTok{        example:}
+
+\CommentTok{        \{b\textquotesingle{}Serak\textquotesingle{}: (\textquotesingle{}Rigel VII\textquotesingle{}, \textquotesingle{}Preparer\textquotesingle{}),}
+\CommentTok{         b\textquotesingle{}Zim\textquotesingle{}: (\textquotesingle{}Irk\textquotesingle{}, \textquotesingle{}Invader\textquotesingle{}),}
+\CommentTok{         b\textquotesingle{}Lrrr\textquotesingle{}: (\textquotesingle{}Omicron Persei 8\textquotesingle{}, \textquotesingle{}Emperor\textquotesingle{})\}}
+
+\CommentTok{        Returned keys are always bytes.  If a key from the keys argument is}
+\CommentTok{        missing from the dictionary, then that row was not found in the}
+\CommentTok{        table (and require\_all\_keys must have been False).}
+
+\CommentTok{    Raises:}
+\CommentTok{        IOError: An error occurred accessing the smalltable.}
+\CommentTok{    """}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+\clearpage
+Similarly, this variation on \texttt{Args:} with a line break is also
+allowed:
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ fetch\_smalltable\_rows(}
+\NormalTok{    table\_handle: smalltable.Table,}
+\NormalTok{    keys: Sequence[}\BuiltInTok{bytes} \OperatorTok{|} \BuiltInTok{str}\NormalTok{],}
+\NormalTok{    require\_all\_keys: }\BuiltInTok{bool} \OperatorTok{=} \VariableTok{False}\NormalTok{,}
+\NormalTok{) }\OperatorTok{{-}\textgreater{}}\NormalTok{ Mapping[}\BuiltInTok{bytes}\NormalTok{, }\BuiltInTok{tuple}\NormalTok{[}\BuiltInTok{str}\NormalTok{, ...]]:}
+    \CommentTok{"""Fetches rows from a Smalltable.}
+
+\CommentTok{    Retrieves rows pertaining to the given keys from the Table instance}
+\CommentTok{    represented by table\_handle.  String keys will be UTF{-}8 encoded.}
+
+\CommentTok{    Args:}
+\CommentTok{      table\_handle:}
+\CommentTok{        An open smalltable.Table instance.}
+\CommentTok{      keys:}
+\CommentTok{        A sequence of strings representing the key of each table row to}
+\CommentTok{        fetch.  String keys will be UTF{-}8 encoded.}
+\CommentTok{      require\_all\_keys:}
+\CommentTok{        If True only rows with values set for all keys will be returned.}
+
+\CommentTok{    Returns:}
+\CommentTok{      A dict mapping keys to the corresponding table row data}
+\CommentTok{      fetched. Each row is represented as a tuple of strings. For}
+\CommentTok{      example:}
+
+\CommentTok{      \{b\textquotesingle{}Serak\textquotesingle{}: (\textquotesingle{}Rigel VII\textquotesingle{}, \textquotesingle{}Preparer\textquotesingle{}),}
+\CommentTok{       b\textquotesingle{}Zim\textquotesingle{}: (\textquotesingle{}Irk\textquotesingle{}, \textquotesingle{}Invader\textquotesingle{}),}
+\CommentTok{       b\textquotesingle{}Lrrr\textquotesingle{}: (\textquotesingle{}Omicron Persei 8\textquotesingle{}, \textquotesingle{}Emperor\textquotesingle{})\}}
+
+\CommentTok{      Returned keys are always bytes.  If a key from the keys argument is}
+\CommentTok{      missing from the dictionary, then that row was not found in the}
+\CommentTok{      table (and require\_all\_keys must have been False).}
+
+\CommentTok{    Raises:}
+\CommentTok{      IOError: An error occurred accessing the smalltable.}
+\CommentTok{    """}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+\subparagraph{Overridden Methods}
+
+A method that overrides a method from a base class does not need a
+docstring if it is explicitly decorated with
+\href{https://typing-extensions.readthedocs.io/en/latest/\#override}{\texttt{@override}}
+(from \texttt{typing\_extensions} or \texttt{typing} modules), unless
+the overriding method's behavior materially refines the base method's
+contract, or details need to be provided (e.g., documenting additional
+side effects), in which case a docstring with at least those differences
+is required on the overriding method.
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{from}\NormalTok{ typing\_extensions }\ImportTok{import}\NormalTok{ override}
+
+\KeywordTok{class}\NormalTok{ Parent:}
+  \KeywordTok{def}\NormalTok{ do\_something(}\VariableTok{self}\NormalTok{):}
+    \CommentTok{"""Parent method, includes docstring."""}
+
+\CommentTok{\# Child class, method annotated with override.}
+\KeywordTok{class}\NormalTok{ Child(Parent):}
+  \AttributeTok{@override}
+  \KeywordTok{def}\NormalTok{ do\_something(}\VariableTok{self}\NormalTok{):}
+    \ControlFlowTok{pass}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Child class, but without @override decorator, a docstring is required.}
+\KeywordTok{class}\NormalTok{ Child(Parent):}
+  \KeywordTok{def}\NormalTok{ do\_something(}\VariableTok{self}\NormalTok{):}
+    \ControlFlowTok{pass}
+
+\CommentTok{\# Docstring is trivial, @override is sufficient to indicate that docs can be}
+\CommentTok{\# found in the base class.}
+\KeywordTok{class}\NormalTok{ Child(Parent):}
+  \AttributeTok{@override}
+  \KeywordTok{def}\NormalTok{ do\_something(}\VariableTok{self}\NormalTok{):}
+    \CommentTok{"""See base class."""}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+\paragraph{Classes}
+
+Classes should have a docstring below the class definition describing
+the class. Public attributes, excluding
+\hyperref[properties]{properties}, should be documented here in an
+\texttt{Attributes} section and follow the same formatting as a
+\hyperref[doc-function-args]{function's \texttt{Args}} section.
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{class}\NormalTok{ SampleClass:}
+    \CommentTok{"""Summary of class here.}
+
+\CommentTok{    Longer class information...}
+\CommentTok{    Longer class information...}
+
+\CommentTok{    Attributes:}
+\CommentTok{        likes\_spam: A boolean indicating if we like SPAM or not.}
+\CommentTok{        eggs: An integer count of the eggs we have laid.}
+\CommentTok{    """}
+
+    \KeywordTok{def} \FunctionTok{\_\_init\_\_}\NormalTok{(}\VariableTok{self}\NormalTok{, likes\_spam: }\BuiltInTok{bool} \OperatorTok{=} \VariableTok{False}\NormalTok{):}
+        \CommentTok{"""Initializes the instance based on spam preference.}
+
+\CommentTok{        Args:}
+\CommentTok{          likes\_spam: Defines if instance exhibits this preference.}
+\CommentTok{        """}
+        \VariableTok{self}\NormalTok{.likes\_spam }\OperatorTok{=}\NormalTok{ likes\_spam}
+        \VariableTok{self}\NormalTok{.eggs }\OperatorTok{=} \DecValTok{0}
+
+    \AttributeTok{@property}
+    \KeywordTok{def}\NormalTok{ butter\_sticks(}\VariableTok{self}\NormalTok{) }\OperatorTok{{-}\textgreater{}} \BuiltInTok{int}\NormalTok{:}
+        \CommentTok{"""The number of butter sticks we have."""}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+All class docstrings should start with a one-line summary that describes
+what the class instance represents. This implies that subclasses of
+\texttt{Exception} should also describe what the exception represents,
+and not the context in which it might occur. The class docstring should
+not repeat unnecessary information, such as that the class is a class.
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Yes:}
+\KeywordTok{class}\NormalTok{ CheeseShopAddress:}
+  \CommentTok{"""The address of a cheese shop.}
+
+\CommentTok{  ...}
+\CommentTok{  """}
+
+\KeywordTok{class}\NormalTok{ OutOfCheeseError(}\PreprocessorTok{Exception}\NormalTok{):}
+  \CommentTok{"""No more cheese is available."""}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# No:}
+\KeywordTok{class}\NormalTok{ CheeseShopAddress:}
+  \CommentTok{"""Class that describes the address of a cheese shop.}
+
+\CommentTok{  ...}
+\CommentTok{  """}
+
+\KeywordTok{class}\NormalTok{ OutOfCheeseError(}\PreprocessorTok{Exception}\NormalTok{):}
+  \CommentTok{"""Raised when no more cheese is available."""}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+\paragraph{Block and Inline Comments}
+
+The final place to have comments is in tricky parts of the code. If
+you're going to have to explain it at the next
+\href{http://en.wikipedia.org/wiki/Code_review}{code review}, you should
+comment it now. Complicated operations get a few lines of comments
+before the operations commence. Non-obvious ones get comments at the end
+of the line.
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# We use a weighted dictionary search to find out where i is in}
+\CommentTok{\# the array.  We extrapolate position based on the largest num}
+\CommentTok{\# in the array and the array size and then do binary search to}
+\CommentTok{\# get the exact number.}
+
+\ControlFlowTok{if}\NormalTok{ i }\OperatorTok{\&}\NormalTok{ (i}\OperatorTok{{-}}\DecValTok{1}\NormalTok{) }\OperatorTok{==} \DecValTok{0}\NormalTok{:  }\CommentTok{\# True if i is 0 or a power of 2.}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+To improve legibility, these comments should start at least 2 spaces
+away from the code with the comment character \texttt{\#}, followed by
+at least one space before the text of the comment itself.
+
+On the other hand, never describe the code. Assume the person reading
+the code knows Python (though not what you're trying to do) better than
+you do.
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# BAD COMMENT: Now go through the b array and make sure whenever i occurs}
+\CommentTok{\# the next element is i+1}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+\paragraph{Punctuation, Spelling, and Grammar}
+
+Pay attention to punctuation, spelling, and grammar; it is easier to
+read well-written comments than badly written ones.
+
+Comments should be as readable as narrative text, with proper
+capitalization and punctuation. In many cases, complete sentences are
+more readable than sentence fragments. Shorter comments, such as
+comments at the end of a line of code, can sometimes be less formal, but
+you should be consistent with your style.
+
+Although it can be frustrating to have a code reviewer point out that
+you are using a comma when you should be using a semicolon, it is very
+important that source code maintain a high level of clarity and
+readability. Proper punctuation, spelling, and grammar help with that
+goal.
+
+\subsection{Strings}
+
+Use an
+\href{https://docs.python.org/3/reference/lexical_analysis.html\#f-strings}{f-string},
+the \texttt{\%} operator, or the \texttt{format} method for formatting
+strings, even when the parameters are all strings. Use your best
+judgment to decide between string formatting options. A single join with
+\texttt{+} is okay but do not format with \texttt{+}.
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Yes: x }\OperatorTok{=} \SpecialStringTok{f\textquotesingle{}name: }\SpecialCharTok{\{}\NormalTok{name}\SpecialCharTok{\}}\SpecialStringTok{; score: }\SpecialCharTok{\{}\NormalTok{n}\SpecialCharTok{\}}\SpecialStringTok{\textquotesingle{}}
+\NormalTok{     x }\OperatorTok{=} \StringTok{\textquotesingle{}}\SpecialCharTok{\%s}\StringTok{, }\SpecialCharTok{\%s}\StringTok{!\textquotesingle{}} \OperatorTok{\%}\NormalTok{ (imperative, expletive)}
+\NormalTok{     x }\OperatorTok{=} \StringTok{\textquotesingle{}}\SpecialCharTok{\{\}}\StringTok{, }\SpecialCharTok{\{\}}\StringTok{\textquotesingle{}}\NormalTok{.}\BuiltInTok{format}\NormalTok{(first, second)}
+\NormalTok{     x }\OperatorTok{=} \StringTok{\textquotesingle{}name: }\SpecialCharTok{\%s}\StringTok{; score: }\SpecialCharTok{\%d}\StringTok{\textquotesingle{}} \OperatorTok{\%}\NormalTok{ (name, n)}
+\NormalTok{     x }\OperatorTok{=} \StringTok{\textquotesingle{}name: }\SpecialCharTok{\%(name)s}\StringTok{; score: }\SpecialCharTok{\%(score)d}\StringTok{\textquotesingle{}} \OperatorTok{\%}\NormalTok{ \{}\StringTok{\textquotesingle{}name\textquotesingle{}}\NormalTok{:name, }\StringTok{\textquotesingle{}score\textquotesingle{}}\NormalTok{:n\}}
+\NormalTok{     x }\OperatorTok{=} \StringTok{\textquotesingle{}name: }\SpecialCharTok{\{\}}\StringTok{; score: }\SpecialCharTok{\{\}}\StringTok{\textquotesingle{}}\NormalTok{.}\BuiltInTok{format}\NormalTok{(name, n)}
+\NormalTok{     x }\OperatorTok{=}\NormalTok{ a }\OperatorTok{+}\NormalTok{ b}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{No: x }\OperatorTok{=}\NormalTok{ first }\OperatorTok{+} \StringTok{\textquotesingle{}, \textquotesingle{}} \OperatorTok{+}\NormalTok{ second}
+\NormalTok{    x }\OperatorTok{=} \StringTok{\textquotesingle{}name: \textquotesingle{}} \OperatorTok{+}\NormalTok{ name }\OperatorTok{+} \StringTok{\textquotesingle{}; score: \textquotesingle{}} \OperatorTok{+} \BuiltInTok{str}\NormalTok{(n)}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+Avoid using the \texttt{+} and \texttt{+=} operators to accumulate a
+string within a loop. In some conditions, accumulating a string with
+addition can lead to quadratic rather than linear running time. Although
+common accumulations of this sort may be optimized on CPython, that is
+an implementation detail. The conditions under which an optimization
+applies are not easy to predict and may change. Instead, add each
+substring to a list and
+\texttt{\textquotesingle{}\textquotesingle{}.join} the list after the
+loop terminates, or write each substring to an \texttt{io.StringIO}
+buffer. These techniques consistently have amortized-linear run-time
+complexity.
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Yes: items }\OperatorTok{=}\NormalTok{ [}\StringTok{\textquotesingle{}\textless{}table\textgreater{}\textquotesingle{}}\NormalTok{]}
+     \ControlFlowTok{for}\NormalTok{ last\_name, first\_name }\KeywordTok{in}\NormalTok{ employee\_list:}
+\NormalTok{         items.append(}\StringTok{\textquotesingle{}\textless{}tr\textgreater{}\textless{}td\textgreater{}}\SpecialCharTok{\%s}\StringTok{, }\SpecialCharTok{\%s}\StringTok{\textless{}/td\textgreater{}\textless{}/tr\textgreater{}\textquotesingle{}} \OperatorTok{\%}\NormalTok{ (last\_name, first\_name))}
+\NormalTok{     items.append(}\StringTok{\textquotesingle{}\textless{}/table\textgreater{}\textquotesingle{}}\NormalTok{)}
+\NormalTok{     employee\_table }\OperatorTok{=} \StringTok{\textquotesingle{}\textquotesingle{}}\NormalTok{.join(items)}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{No: employee\_table }\OperatorTok{=} \StringTok{\textquotesingle{}\textless{}table\textgreater{}\textquotesingle{}}
+    \ControlFlowTok{for}\NormalTok{ last\_name, first\_name }\KeywordTok{in}\NormalTok{ employee\_list:}
+\NormalTok{        employee\_table }\OperatorTok{+=} \StringTok{\textquotesingle{}\textless{}tr\textgreater{}\textless{}td\textgreater{}}\SpecialCharTok{\%s}\StringTok{, }\SpecialCharTok{\%s}\StringTok{\textless{}/td\textgreater{}\textless{}/tr\textgreater{}\textquotesingle{}} \OperatorTok{\%}\NormalTok{ (last\_name, first\_name)}
+\NormalTok{    employee\_table }\OperatorTok{+=} \StringTok{\textquotesingle{}\textless{}/table\textgreater{}\textquotesingle{}}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+Be consistent with your choice of string quote character within a file.
+Pick \texttt{\textquotesingle{}} or \texttt{"} and stick with it. It is
+okay to use the other quote character on a string to avoid the need to
+backslash-escape quote characters within the string.
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Yes:}
+\NormalTok{  Python(}\StringTok{\textquotesingle{}Why are you hiding your eyes?\textquotesingle{}}\NormalTok{)}
+\NormalTok{  Gollum(}\StringTok{"I\textquotesingle{}m scared of lint errors."}\NormalTok{)}
+\NormalTok{  Narrator(}\StringTok{\textquotesingle{}"Good!" thought a happy Python reviewer.\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{No:}
+\NormalTok{  Python(}\StringTok{"Why are you hiding your eyes?"}\NormalTok{)}
+\NormalTok{  Gollum(}\StringTok{\textquotesingle{}The lint. It burns. It burns us.\textquotesingle{}}\NormalTok{)}
+\NormalTok{  Gollum(}\StringTok{"Always the great lint. Watching. Watching."}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+Prefer \texttt{"""} for multi-line strings rather than
+\texttt{\textquotesingle{}\textquotesingle{}\textquotesingle{}}.
+Projects may choose to use
+\texttt{\textquotesingle{}\textquotesingle{}\textquotesingle{}} for all
+non-docstring multi-line strings if and only if they also use
+\texttt{\textquotesingle{}} for regular strings. Docstrings must use
+\texttt{"""} regardless.
+
+Multi-line strings do not flow with the indentation of the rest of the
+program. If you need to avoid embedding extra space in the string, use
+either concatenated single-line strings or a multi-line string with
+\href{https://docs.python.org/3/library/textwrap.html\#textwrap.dedent}{\texttt{textwrap.dedent()}}
+to remove the initial space on each line:
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{  No:}
+\NormalTok{  long\_string }\OperatorTok{=} \StringTok{"""This is pretty ugly.}
+\StringTok{Don\textquotesingle{}t do this.}
+\StringTok{"""}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{  Yes:}
+\NormalTok{  long\_string }\OperatorTok{=} \StringTok{"""This is fine if your use case can accept}
+\StringTok{      extraneous leading spaces."""}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{  Yes:}
+\NormalTok{  long\_string }\OperatorTok{=}\NormalTok{ (}\StringTok{"And this is fine if you cannot accept}\CharTok{\textbackslash{}n}\StringTok{"} \OperatorTok{+}
+                 \StringTok{"extraneous leading spaces."}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{  Yes:}
+\NormalTok{  long\_string }\OperatorTok{=}\NormalTok{ (}\StringTok{"And this too is fine if you cannot accept}\CharTok{\textbackslash{}n}\StringTok{"}
+                 \StringTok{"extraneous leading spaces."}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{  Yes:}
+  \ImportTok{import}\NormalTok{ textwrap}
+
+\NormalTok{  long\_string }\OperatorTok{=}\NormalTok{ textwrap.dedent(}\StringTok{"""}\CharTok{\textbackslash{}}
+\StringTok{      This is also fine, because textwrap.dedent()}
+\StringTok{      will collapse common leading spaces in each line."""}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+Note that using a backslash here does not violate the prohibition
+against \hyperref[line-length]{explicit line continuation}; in this
+case, the backslash is
+\href{https://docs.python.org/3/reference/lexical_analysis.html\#string-and-bytes-literals}{escaping
+a newline} in a string literal.
+
+\paragraph{Logging}
+
+For logging functions that expect a pattern-string (with
+\%-placeholders) as their first argument: Always call them with a string
+literal (not an f-string!) as their first argument with
+pattern-parameters as subsequent arguments. Some logging implementations
+collect the unexpanded pattern-string as a queryable field. It also
+prevents spending time rendering a message that no logger is configured
+to output.
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{  Yes:}
+  \ImportTok{import}\NormalTok{ tensorflow }\ImportTok{as}\NormalTok{ tf}
+\NormalTok{  logger }\OperatorTok{=}\NormalTok{ tf.get\_logger()}
+\NormalTok{  logger.info(}\StringTok{\textquotesingle{}TensorFlow Version is: }\SpecialCharTok{\%s}\StringTok{\textquotesingle{}}\NormalTok{, tf.\_\_version\_\_)}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{  Yes:}
+  \ImportTok{import}\NormalTok{ os}
+  \ImportTok{from}\NormalTok{ absl }\ImportTok{import}\NormalTok{ logging}
+
+\NormalTok{  logging.info(}\StringTok{\textquotesingle{}Current $PAGER is: }\SpecialCharTok{\%s}\StringTok{\textquotesingle{}}\NormalTok{, os.getenv(}\StringTok{\textquotesingle{}PAGER\textquotesingle{}}\NormalTok{, default}\OperatorTok{=}\StringTok{\textquotesingle{}\textquotesingle{}}\NormalTok{))}
+
+\NormalTok{  homedir }\OperatorTok{=}\NormalTok{ os.getenv(}\StringTok{\textquotesingle{}HOME\textquotesingle{}}\NormalTok{)}
+  \ControlFlowTok{if}\NormalTok{ homedir }\KeywordTok{is} \VariableTok{None} \KeywordTok{or} \KeywordTok{not}\NormalTok{ os.access(homedir, os.W\_OK):}
+\NormalTok{    logging.error(}\StringTok{\textquotesingle{}Cannot write to home directory, $HOME=}\SpecialCharTok{\%r}\StringTok{\textquotesingle{}}\NormalTok{, homedir)}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{  No:}
+  \ImportTok{import}\NormalTok{ os}
+  \ImportTok{from}\NormalTok{ absl }\ImportTok{import}\NormalTok{ logging}
+
+\NormalTok{  logging.info(}\StringTok{\textquotesingle{}Current $PAGER is:\textquotesingle{}}\NormalTok{)}
+\NormalTok{  logging.info(os.getenv(}\StringTok{\textquotesingle{}PAGER\textquotesingle{}}\NormalTok{, default}\OperatorTok{=}\StringTok{\textquotesingle{}\textquotesingle{}}\NormalTok{))}
+
+\NormalTok{  homedir }\OperatorTok{=}\NormalTok{ os.getenv(}\StringTok{\textquotesingle{}HOME\textquotesingle{}}\NormalTok{)}
+  \ControlFlowTok{if}\NormalTok{ homedir }\KeywordTok{is} \VariableTok{None} \KeywordTok{or} \KeywordTok{not}\NormalTok{ os.access(homedir, os.W\_OK):}
+\NormalTok{    logging.error(}\SpecialStringTok{f\textquotesingle{}Cannot write to home directory, $HOME=}\SpecialCharTok{\{}\NormalTok{homedir}\SpecialCharTok{!r\}}\SpecialStringTok{\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+\paragraph{Error Messages}
+
+Error messages (such as: message strings on exceptions like
+\texttt{ValueError}, or messages shown to the user) should follow three
+guidelines:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  The message needs to precisely match the actual error condition.
+\item
+  Interpolated pieces need to always be clearly identifiable as such.
+\item
+  They should allow simple automated processing (e.g.~grepping).
+\end{enumerate}
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{  Yes:}
+  \ControlFlowTok{if} \KeywordTok{not} \DecValTok{0} \OperatorTok{\textless{}=}\NormalTok{ p }\OperatorTok{\textless{}=} \DecValTok{1}\NormalTok{:}
+    \ControlFlowTok{raise} \PreprocessorTok{ValueError}\NormalTok{(}\SpecialStringTok{f\textquotesingle{}Not a probability: }\SpecialCharTok{\{}\NormalTok{p}\OperatorTok{=}\SpecialCharTok{\}}\SpecialStringTok{\textquotesingle{}}\NormalTok{)}
+
+  \ControlFlowTok{try}\NormalTok{:}
+\NormalTok{    os.rmdir(workdir)}
+  \ControlFlowTok{except} \PreprocessorTok{OSError} \ImportTok{as}\NormalTok{ error:}
+\NormalTok{    logging.warning(}\StringTok{\textquotesingle{}Could not remove directory (reason: }\SpecialCharTok{\%r}\StringTok{): }\SpecialCharTok{\%r}\StringTok{\textquotesingle{}}\NormalTok{,}
+\NormalTok{                    error, workdir)}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{  No:}
+  \ControlFlowTok{if}\NormalTok{ p }\OperatorTok{\textless{}} \DecValTok{0} \KeywordTok{or}\NormalTok{ p }\OperatorTok{\textgreater{}} \DecValTok{1}\NormalTok{:  }\CommentTok{\# PROBLEM: also false for float(\textquotesingle{}nan\textquotesingle{})!}
+    \ControlFlowTok{raise} \PreprocessorTok{ValueError}\NormalTok{(}\SpecialStringTok{f\textquotesingle{}Not a probability: }\SpecialCharTok{\{}\NormalTok{p}\OperatorTok{=}\SpecialCharTok{\}}\SpecialStringTok{\textquotesingle{}}\NormalTok{)}
+
+  \ControlFlowTok{try}\NormalTok{:}
+\NormalTok{    os.rmdir(workdir)}
+  \ControlFlowTok{except} \PreprocessorTok{OSError}\NormalTok{:}
+    \CommentTok{\# PROBLEM: Message makes an assumption that might not be true:}
+    \CommentTok{\# Deletion might have failed for some other reason, misleading}
+    \CommentTok{\# whoever has to debug this.}
+\NormalTok{    logging.warning(}\StringTok{\textquotesingle{}Directory already was deleted: }\SpecialCharTok{\%s}\StringTok{\textquotesingle{}}\NormalTok{, workdir)}
+
+  \ControlFlowTok{try}\NormalTok{:}
+\NormalTok{    os.rmdir(workdir)}
+  \ControlFlowTok{except} \PreprocessorTok{OSError}\NormalTok{:}
+    \CommentTok{\# PROBLEM: The message is harder to grep for than necessary, and}
+    \CommentTok{\# not universally non{-}confusing for all possible values of \textasciigrave{}workdir\textasciigrave{}.}
+    \CommentTok{\# Imagine someone calling a library function with such code}
+    \CommentTok{\# using a name such as workdir = \textquotesingle{}deleted\textquotesingle{}. The warning would read:}
+    \CommentTok{\# "The deleted directory could not be deleted."}
+\NormalTok{    logging.warning(}\StringTok{\textquotesingle{}The }\SpecialCharTok{\%s}\StringTok{ directory could not be deleted.\textquotesingle{}}\NormalTok{, workdir)}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+\subsection{Files, Sockets, and similar Stateful Resources}
+
+Explicitly close files and sockets when done with them. This rule
+naturally extends to closeable resources that internally use sockets,
+such as database connections, and also other resources that need to be
+closed down in a similar fashion. To name only a few examples, this also
+includes \href{https://docs.python.org/3/library/mmap.html}{mmap}
+mappings, \href{https://docs.h5py.org/en/stable/high/file.html}{h5py
+File objects}, and
+\href{https://matplotlib.org/2.1.0/api/_as_gen/matplotlib.pyplot.close.html}{matplotlib.pyplot
+figure windows}.
+
+Leaving files, sockets or other such stateful objects open unnecessarily
+has many downsides:
+
+\begin{itemize}
+\tightlist
+\item
+  They may consume limited system resources, such as file descriptors.
+  Code that deals with many such objects may exhaust those resources
+  unnecessarily if they're not returned to the system promptly after
+  use.
+\item
+  Holding files open may prevent other actions such as moving or
+  deleting them, or unmounting a filesystem.
+\item
+  Files and sockets that are shared throughout a program may
+  inadvertently be read from or written to after logically being closed.
+  If they are actually closed, attempts to read or write from them will
+  raise exceptions, making the problem known sooner.
+\end{itemize}
+
+Furthermore, while files and sockets (and some similarly behaving
+resources) are automatically closed when the object is destructed,
+coupling the lifetime of the object to the state of the resource is poor
+practice:
+
+\begin{itemize}
+\tightlist
+\item
+  There are no guarantees as to when the runtime will actually invoke
+  the \texttt{\_\_del\_\_} method. Different Python implementations use
+  different memory management techniques, such as delayed garbage
+  collection, which may increase the object's lifetime arbitrarily and
+  indefinitely.
+\item
+  Unexpected references to the file, e.g.~in globals or exception
+  tracebacks, may keep it around longer than intended.
+\end{itemize}
+
+Relying on finalizers to do automatic cleanup that has observable side
+effects has been rediscovered over and over again to lead to major
+problems, across many decades and multiple languages (see e.g.
+\href{https://wiki.sei.cmu.edu/confluence/display/java/MET12-J.+Do+not+use+finalizers}{this
+article} for Java).
+
+The preferred way to manage files and similar resources is using the
+\href{http://docs.python.org/reference/compound_stmts.html\#the-with-statement}{\texttt{with}
+statement}:
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{with} \BuiltInTok{open}\NormalTok{(}\StringTok{"hello.txt"}\NormalTok{) }\ImportTok{as}\NormalTok{ hello\_file:}
+    \ControlFlowTok{for}\NormalTok{ line }\KeywordTok{in}\NormalTok{ hello\_file:}
+        \BuiltInTok{print}\NormalTok{(line)}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+For file-like objects that do not support the \texttt{with} statement,
+use \texttt{contextlib.closing()}:
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{import}\NormalTok{ contextlib}
+
+\ControlFlowTok{with}\NormalTok{ contextlib.closing(urllib.urlopen(}\StringTok{"http://www.python.org/"}\NormalTok{)) }\ImportTok{as}\NormalTok{ front\_page:}
+    \ControlFlowTok{for}\NormalTok{ line }\KeywordTok{in}\NormalTok{ front\_page:}
+        \BuiltInTok{print}\NormalTok{(line)}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+In rare cases where context-based resource management is infeasible,
+code documentation must explain clearly how resource lifetime is
+managed.
+
+\subsection{TODO Comments}
+
+Use \texttt{TODO} comments for code that is temporary, a short-term
+solution, or good-enough but not perfect.
+
+A \texttt{TODO} comment begins with the word \texttt{TODO} in all caps,
+a following colon, and a link to a resource that contains the context,
+ideally a bug reference. A bug reference is preferable because bugs are
+tracked and have follow-up comments. Follow this piece of context with
+an explanatory string introduced with a hyphen \texttt{-}. The purpose
+is to have a consistent \texttt{TODO} format that can be searched to
+find out how to get more details.
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# }\AlertTok{TODO}\CommentTok{: crbug.com/192795 {-} Investigate cpufreq optimizations.}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+Old style, formerly recommended, but discouraged for use in new code:
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# }\AlertTok{TODO}\CommentTok{(crbug.com/192795): Investigate cpufreq optimizations.}
+\CommentTok{\# }\AlertTok{TODO}\CommentTok{(yourusername): Use a "\textbackslash{}*" here for concatenation operator.}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+Avoid adding TODOs that refer to an individual or team as the context:
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# }\AlertTok{TODO}\CommentTok{: @yourusername {-} File an issue and use a \textquotesingle{}*\textquotesingle{} for repetition.}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+If your \texttt{TODO} is of the form ``At a future date do something''
+make sure that you either include a very specific date (``Fix by
+November 2009'') or a very specific event (``Remove this code when all
+clients can handle XML responses.'') that future code maintainers will
+comprehend. Issues are ideal for tracking this.
+
+\subsection{Imports formatting}
+
+Imports should be on separate lines; there are
+\hyperref[typing-imports]{exceptions for \texttt{typing} and
+\texttt{collections.abc} imports}.
+
+E.g.:
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Yes: }\ImportTok{from}\NormalTok{ collections.abc }\ImportTok{import}\NormalTok{ Mapping, Sequence}
+     \ImportTok{import}\NormalTok{ os}
+     \ImportTok{import}\NormalTok{ sys}
+     \ImportTok{from}\NormalTok{ typing }\ImportTok{import}\NormalTok{ Any, NewType}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{No:  }\ImportTok{import}\NormalTok{ os, sys}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+Imports are always put at the top of the file, just after any module
+comments and docstrings and before module globals and constants. Imports
+should be grouped from most generic to least generic:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Python future import statements. For example:
+
+\begin{samepage}
+  \begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{from}\NormalTok{ \_\_future\_\_ }\ImportTok{import}\NormalTok{ annotations}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+  See \hyperref[from-future-imports]{above} for more information about
+  those.
+\item
+  Python standard library imports. For example:
+
+\begin{samepage}
+  \begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{import}\NormalTok{ sys}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+\item
+  \href{https://pypi.org/}{third-party} module or package imports. For
+  example:
+
+\begin{samepage}
+  \begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{import}\NormalTok{ tensorflow }\ImportTok{as}\NormalTok{ tf}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+\item
+  Code repository sub-package imports. For example:
+
+\begin{samepage}
+  \begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{from}\NormalTok{ otherproject.ai }\ImportTok{import}\NormalTok{ mind}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+\item
+  \textbf{Deprecated:} application-specific imports that are part of the
+  same top-level sub-package as this file. For example:
+
+\begin{samepage}
+  \begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{from}\NormalTok{ myproject.backend.hgwells }\ImportTok{import}\NormalTok{ time\_machine}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+  You may find older Google Python Style code doing this, but it is no
+  longer required. \textbf{New code is encouraged not to bother with
+  this.} Simply treat application-specific sub-package imports the same
+  as other sub-package imports.
+\end{enumerate}
+
+Within each grouping, imports should be sorted lexicographically,
+ignoring case, according to each module's full package path (the
+\texttt{path} in \texttt{from\ path\ import\ ...}). Code may optionally
+place a blank line between import sections.
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{import}\NormalTok{ collections}
+\ImportTok{import}\NormalTok{ queue}
+\ImportTok{import}\NormalTok{ sys}
+
+\ImportTok{from}\NormalTok{ absl }\ImportTok{import}\NormalTok{ app}
+\ImportTok{from}\NormalTok{ absl }\ImportTok{import}\NormalTok{ flags}
+\ImportTok{import}\NormalTok{ bs4}
+\ImportTok{import}\NormalTok{ cryptography}
+\ImportTok{import}\NormalTok{ tensorflow }\ImportTok{as}\NormalTok{ tf}
+
+\ImportTok{from}\NormalTok{ book.genres }\ImportTok{import}\NormalTok{ scifi}
+\ImportTok{from}\NormalTok{ myproject.backend }\ImportTok{import}\NormalTok{ huxley}
+\ImportTok{from}\NormalTok{ myproject.backend.hgwells }\ImportTok{import}\NormalTok{ time\_machine}
+\ImportTok{from}\NormalTok{ myproject.backend.state\_machine }\ImportTok{import}\NormalTok{ main\_loop}
+\ImportTok{from}\NormalTok{ otherproject.ai }\ImportTok{import}\NormalTok{ body}
+\ImportTok{from}\NormalTok{ otherproject.ai }\ImportTok{import}\NormalTok{ mind}
+\ImportTok{from}\NormalTok{ otherproject.ai }\ImportTok{import}\NormalTok{ soul}
+
+\CommentTok{\# Older style code may have these imports down here instead:}
+\CommentTok{\#from myproject.backend.hgwells import time\_machine}
+\CommentTok{\#from myproject.backend.state\_machine import main\_loop}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+\subsection{Statements}
+
+Generally only one statement per line.
+
+However, you may put the result of a test on the same line as the test
+only if the entire statement fits on one line. In particular, you can
+never do so with \texttt{try}/\texttt{except} since the \texttt{try} and
+\texttt{except} can't both fit on the same line, and you can only do so
+with an \texttt{if} if there is no \texttt{else}.
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Yes:}
+
+  \ControlFlowTok{if}\NormalTok{ foo: bar(foo)}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{No:}
+
+  \ControlFlowTok{if}\NormalTok{ foo: bar(foo)}
+  \ControlFlowTok{else}\NormalTok{:   baz(foo)}
+
+  \ControlFlowTok{try}\NormalTok{:               bar(foo)}
+  \ControlFlowTok{except} \PreprocessorTok{ValueError}\NormalTok{: baz(foo)}
+
+  \ControlFlowTok{try}\NormalTok{:}
+\NormalTok{      bar(foo)}
+  \ControlFlowTok{except} \PreprocessorTok{ValueError}\NormalTok{: baz(foo)}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+\subsection{Getters and Setters}
+
+Getter and setter functions (also called accessors and mutators) should
+be used when they provide a meaningful role or behavior for getting or
+setting a variable's value.
+
+In particular, they should be used when getting or setting the variable
+is complex or the cost is significant, either currently or in a
+reasonable future.
+
+If, for example, a pair of getters/setters simply read and write an
+internal attribute, the internal attribute should be made public
+instead. By comparison, if setting a variable means some state is
+invalidated or rebuilt, it should be a setter function. The function
+invocation hints that a potentially non-trivial operation is occurring.
+Alternatively, \hyperref[properties]{properties} may be an option when
+simple logic is needed, or refactoring to no longer need getters and
+setters.
+
+Getters and setters should follow the \hyperref[s3.16-naming]{Naming}
+guidelines, such as \texttt{get\_foo()} and \texttt{set\_foo()}.
+
+If the past behavior allowed access through a property, do not bind the
+new getter/setter functions to the property. Any code still attempting
+to access the variable by the old method should break visibly so they
+are made aware of the change in complexity.
+
+\subsection{Naming}
+
+\texttt{module\_name}, \texttt{package\_name}, \texttt{ClassName},
+\texttt{method\_name}, \texttt{ExceptionName}, \texttt{function\_name},
+\texttt{GLOBAL\_CONSTANT\_NAME}, \texttt{global\_var\_name},
+\texttt{instance\_var\_name}, \texttt{function\_parameter\_name},
+\texttt{local\_var\_name}, \texttt{query\_proper\_noun\_for\_thing},
+\texttt{send\_acronym\_via\_https}.
+
+Function names, variable names, and filenames should be descriptive;
+avoid abbreviation. In particular, do not use abbreviations that are
+ambiguous or unfamiliar to readers outside your project, and do not
+abbreviate by deleting letters within a word.
+
+Always use a \texttt{.py} filename extension. Never use dashes.
+
+\paragraph{Names to Avoid}
+
+\begin{itemize}
+\item
+  single character names, except for specifically allowed cases:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    counters or iterators (e.g.~\texttt{i}, \texttt{j}, \texttt{k},
+    \texttt{v}, et al.)
+  \item
+    \texttt{e} as an exception identifier in \texttt{try/except}
+    statements.
+  \item
+    \texttt{f} as a file handle in \texttt{with} statements
+  \item
+    private \hyperref[typing-type-var]{type variables} with no
+    constraints (e.g. \texttt{\_T\ =\ TypeVar("\_T")},
+    \texttt{\_P\ =\ ParamSpec("\_P")})
+  \end{itemize}
+
+  Please be mindful not to abuse single-character naming. Generally
+  speaking, descriptiveness should be proportional to the name's scope
+  of visibility. For example, \texttt{i} might be a fine name for 5-line
+  code block but within multiple nested scopes, it is likely too vague.
+\item
+  dashes (\texttt{-}) in any package/module name
+\item
+  \texttt{\_\_double\_leading\_and\_trailing\_underscore\_\_} names
+  (reserved by Python)
+\item
+  offensive terms
+\item
+  names that needlessly include the type of the variable (for example:
+  \texttt{id\_to\_name\_dict})
+\end{itemize}
+
+\paragraph{Naming Conventions}
+
+\begin{itemize}
+\item
+  ``Internal'' means internal to a module, or protected or private
+  within a class.
+\item
+  Prepending a single underscore (\texttt{\_}) has some support for
+  protecting module variables and functions (linters will flag protected
+  member access). Note that it is okay for unit tests to access
+  protected constants from the modules under test.
+\item
+  Prepending a double underscore (\texttt{\_\_} aka ``dunder'') to an
+  instance variable or method effectively makes the variable or method
+  private to its class (using name mangling); we discourage its use as
+  it impacts readability and testability, and isn't \emph{really}
+  private. Prefer a single underscore.
+\item
+  Place related classes and top-level functions together in a module.
+  Unlike Java, there is no need to limit yourself to one class per
+  module.
+\item
+  Use CapWords for class names, but lower\_with\_under.py for module
+  names. Although there are some old modules named CapWords.py, this is
+  now discouraged because it's confusing when the module happens to be
+  named after a class. (``wait -- did I write \texttt{import\ StringIO}
+  or \texttt{from\ StringIO\ import\ \ \ \ \ StringIO}?'')
+\item
+  New \emph{unit test} files follow PEP 8 compliant lower\_with\_under
+  method names, for example,
+  \texttt{test\_\textless{}method\_under\_test\textgreater{}\_\textless{}state\textgreater{}}.
+  For consistency(*) with legacy modules that follow CapWords function
+  names, underscores may appear in method names starting with
+  \texttt{test} to separate logical components of the name. One possible
+  pattern is
+  \texttt{test\textless{}MethodUnderTest\textgreater{}\_\textless{}state\textgreater{}}.
+\end{itemize}
+
+\paragraph{File Naming}
+
+Python filenames must have a \texttt{.py} extension and must not contain
+dashes (\texttt{-}). This allows them to be imported and unittested. If
+you want an executable to be accessible without the extension, use a
+symbolic link or a simple bash wrapper containing
+\texttt{exec\ "\$0.py"\ "\$@"}.
+
+\paragraph{Guidelines derived from}
+\href{https://en.wikipedia.org/wiki/Guido_van_Rossum}{Guido}'s
+\begin{table}[h!]
+  \centering
+  \begin{tabular}{|>{\raggedright\arraybackslash}p{4cm}|>{\raggedright\arraybackslash}p{4cm}|>{\raggedright\arraybackslash}p{4cm}|}
+  \hline
+  \textbf{Type} & \textbf{Public} & \textbf{Internal} \\
+  \hline
+  Packages & \texttt{lower\_with\_under} &  \\
+  \hline
+  Modules & \texttt{lower\_with\_under} & \texttt{\_lower\_with\_under} \\
+  \hline
+  Classes & \texttt{CapWords} & \texttt{\_CapWords} \\
+  \hline
+  Exceptions & \texttt{CapWords} &  \\
+  \hline
+  Functions & \texttt{lower\_with\_under()} & \texttt{\_lower\_with\_under()} \\
+  \hline
+  Global/Class Constants & \texttt{CAPS\_WITH\_UNDER} & \texttt{\_CAPS\_WITH\_UNDER} \\
+  \hline
+  Global/Class Variables & \texttt{lower\_with\_under} & \texttt{\_lower\_with\_under} \\
+  \hline
+  Instance Variables & \texttt{lower\_with\_under} & \texttt{\_lower\_with\_under} (protected) \\
+  \hline
+  Method Names & \texttt{lower\_with\_under()} & \texttt{\_lower\_with\_under()} (protected) \\
+  \hline
+  Function/Method Parameters & \texttt{lower\_with\_under} &  \\
+  \hline
+  Local Variables & \texttt{lower\_with\_under} &  \\
+  \hline
+  \end{tabular}
+  \caption{Guidelines from Guido's Recommendations}
+  \label{tab:guidelines}
+  \end{table}
+
+\paragraph{Mathematical Notation}
+
+For mathematically heavy code, short variable names that would otherwise
+violate the style guide are preferred when they match established
+notation in a reference paper or algorithm. When doing so, reference the
+source of all naming conventions in a comment or docstring or, if the
+source is not accessible, clearly document the naming conventions.
+Prefer PEP8-compliant \texttt{descriptive\_names} for public APIs, which
+are much more likely to be encountered out of context.
+
+\subsection{Main}
+
+In Python, \texttt{pydoc} as well as unit tests require modules to be
+importable. If a file is meant to be used as an executable, its main
+functionality should be in a \texttt{main()} function, and your code
+should always check
+\texttt{if\ \_\_name\_\_\ ==\ \textquotesingle{}\_\_main\_\_\textquotesingle{}}
+before executing your main program, so that it is not executed when the
+module is imported.
+
+When using \href{https://github.com/abseil/abseil-py}{absl}, use
+\texttt{app.run}:
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{from}\NormalTok{ absl }\ImportTok{import}\NormalTok{ app}
+\NormalTok{...}
+
+\KeywordTok{def}\NormalTok{ main(argv: Sequence[}\BuiltInTok{str}\NormalTok{]):}
+    \CommentTok{\# process non{-}flag arguments}
+\NormalTok{    ...}
+
+\ControlFlowTok{if} \VariableTok{\_\_name\_\_} \OperatorTok{==} \StringTok{\textquotesingle{}\_\_main\_\_\textquotesingle{}}\NormalTok{:}
+\NormalTok{    app.run(main)}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+Otherwise, use:
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ main():}
+\NormalTok{    ...}
+
+\ControlFlowTok{if} \VariableTok{\_\_name\_\_} \OperatorTok{==} \StringTok{\textquotesingle{}\_\_main\_\_\textquotesingle{}}\NormalTok{:}
+\NormalTok{    main()}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+All code at the top level will be executed when the module is imported.
+Be careful not to call functions, create objects, or perform other
+operations that should not be executed when the file is being
+\texttt{pydoc}ed.
+
+\subsection{Function length}
+
+Prefer small and focused functions.
+
+We recognize that long functions are sometimes appropriate, so no hard
+limit is placed on function length. If a function exceeds about 40
+lines, think about whether it can be broken up without harming the
+structure of the program.
+
+Even if your long function works perfectly now, someone modifying it in
+a few months may add new behavior. This could result in bugs that are
+hard to find. Keeping your functions short and simple makes it easier
+for other people to read and modify your code.
+
+You could find long and complicated functions when working with some
+code. Do not be intimidated by modifying existing code: if working with
+such a function proves to be difficult, you find that errors are hard to
+debug, or you want to use a piece of it in several different contexts,
+consider breaking up the function into smaller and more manageable
+pieces.
+
+\subsection{Type Annotations}
+
+\paragraph{General Rules}
+
+\begin{itemize}
+\item
+  Familiarize yourself with
+  \href{https://peps.python.org/pep-0484/}{PEP-484}.
+\item
+  Annotating \texttt{self} or \texttt{cls} is generally not necessary.
+  \href{https://docs.python.org/3/library/typing.html\#typing.Self}{\texttt{Self}}
+  can be used if it is necessary for proper type information, e.g.
+
+\begin{samepage}
+  \begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{from}\NormalTok{ typing }\ImportTok{import}\NormalTok{ Self}
+
+\KeywordTok{class}\NormalTok{ BaseClass:}
+  \AttributeTok{@classmethod}
+  \KeywordTok{def}\NormalTok{ create(cls) }\OperatorTok{{-}\textgreater{}}\NormalTok{ Self:}
+\NormalTok{    ...}
+
+  \KeywordTok{def}\NormalTok{ difference(}\VariableTok{self}\NormalTok{, other: Self) }\OperatorTok{{-}\textgreater{}} \BuiltInTok{float}\NormalTok{:}
+\NormalTok{    ...}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+\item
+  Similarly, don't feel compelled to annotate the return value of
+  \texttt{\_\_init\_\_} (where \texttt{None} is the only valid option).
+\item
+  If any other variable or a returned type should not be expressed, use
+  \texttt{Any}.
+\item
+  You are not required to annotate all the functions in a module.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    At least annotate your public APIs.
+  \item
+    Use judgment to get to a good balance between safety and clarity on
+    the one hand, and flexibility on the other.
+  \item
+    Annotate code that is prone to type-related errors (previous bugs or
+    complexity).
+  \item
+    Annotate code that is hard to understand.
+  \item
+    Annotate code as it becomes stable from a types perspective. In many
+    cases, you can annotate all the functions in mature code without
+    losing too much flexibility.
+  \end{itemize}
+\end{itemize}
+
+\paragraph{Line Breaking}
+
+Try to follow the existing \hyperref[indentation]{indentation} rules.
+
+After annotating, many function signatures will become ``one parameter
+per line''. To ensure the return type is also given its own line, a
+comma can be placed after the last parameter.
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ my\_method(}
+    \VariableTok{self}\NormalTok{,}
+\NormalTok{    first\_var: }\BuiltInTok{int}\NormalTok{,}
+\NormalTok{    second\_var: Foo,}
+\NormalTok{    third\_var: Bar }\OperatorTok{|} \VariableTok{None}\NormalTok{,}
+\NormalTok{) }\OperatorTok{{-}\textgreater{}} \BuiltInTok{int}\NormalTok{:}
+\NormalTok{  ...}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+Always prefer breaking between variables, and not, for example, between
+variable names and type annotations. However, if everything fits on the
+same line, go for it.
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ my\_method(}\VariableTok{self}\NormalTok{, first\_var: }\BuiltInTok{int}\NormalTok{) }\OperatorTok{{-}\textgreater{}} \BuiltInTok{int}\NormalTok{:}
+\NormalTok{  ...}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+If the combination of the function name, the last parameter, and the
+return type is too long, indent by 4 in a new line. When using line
+breaks, prefer putting each parameter and the return type on their own
+lines and aligning the closing parenthesis with the \texttt{def}:
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Yes:}
+\KeywordTok{def}\NormalTok{ my\_method(}
+    \VariableTok{self}\NormalTok{,}
+\NormalTok{    other\_arg: MyLongType }\OperatorTok{|} \VariableTok{None}\NormalTok{,}
+\NormalTok{) }\OperatorTok{{-}\textgreater{}} \BuiltInTok{tuple}\NormalTok{[MyLongType1, MyLongType1]:}
+\NormalTok{  ...}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+Optionally, the return type may be put on the same line as the last
+parameter:
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Okay:}
+\KeywordTok{def}\NormalTok{ my\_method(}
+    \VariableTok{self}\NormalTok{,}
+\NormalTok{    first\_var: }\BuiltInTok{int}\NormalTok{,}
+\NormalTok{    second\_var: }\BuiltInTok{int}\NormalTok{) }\OperatorTok{{-}\textgreater{}} \BuiltInTok{dict}\NormalTok{[OtherLongType, MyLongType]:}
+\NormalTok{  ...}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+\texttt{pylint} allows you to move the closing parenthesis to a new line
+and align with the opening one, but this is less readable.
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{No:}
+\KeywordTok{def}\NormalTok{ my\_method(}\VariableTok{self}\NormalTok{,}
+\NormalTok{              other\_arg: MyLongType }\OperatorTok{|} \VariableTok{None}\NormalTok{,}
+\NormalTok{             ) }\OperatorTok{{-}\textgreater{}} \BuiltInTok{dict}\NormalTok{[OtherLongType, MyLongType]:}
+\NormalTok{  ...}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+As in the examples above, prefer not to break types. However, sometimes
+they are too long to be on a single line (try to keep sub-types
+unbroken).
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ my\_method(}
+    \VariableTok{self}\NormalTok{,}
+\NormalTok{    first\_var: }\BuiltInTok{tuple}\NormalTok{[}\BuiltInTok{list}\NormalTok{[MyLongType1],}
+                     \BuiltInTok{list}\NormalTok{[MyLongType2]],}
+\NormalTok{    second\_var: }\BuiltInTok{list}\NormalTok{[}\BuiltInTok{dict}\NormalTok{[}
+\NormalTok{        MyLongType3, MyLongType4]],}
+\NormalTok{) }\OperatorTok{{-}\textgreater{}} \VariableTok{None}\NormalTok{:}
+\NormalTok{  ...}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+If a single name and type is too long, consider using an
+\hyperref[typing-aliases]{alias} for the type. The last resort is to
+break after the colon and indent by 4.
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Yes:}
+\KeywordTok{def}\NormalTok{ my\_function(}
+\NormalTok{    long\_variable\_name:}
+\NormalTok{        long\_module\_name.LongTypeName,}
+\NormalTok{) }\OperatorTok{{-}\textgreater{}} \VariableTok{None}\NormalTok{:}
+\NormalTok{  ...}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{No:}
+\KeywordTok{def}\NormalTok{ my\_function(}
+\NormalTok{    long\_variable\_name: long\_module\_name.}
+\NormalTok{        LongTypeName,}
+\NormalTok{) }\OperatorTok{{-}\textgreater{}} \VariableTok{None}\NormalTok{:}
+\NormalTok{  ...}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+\paragraph{Forward Declarations}
+
+If you need to use a class name (from the same module) that is not yet
+defined -- for example, if you need the class name inside the
+declaration of that class, or if you use a class that is defined later
+in the code -- either use
+\texttt{from\ \_\_future\_\_\ import\ annotations} or use a string for
+the class name.
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Yes:}
+\ImportTok{from}\NormalTok{ \_\_future\_\_ }\ImportTok{import}\NormalTok{ annotations}
+
+\KeywordTok{class}\NormalTok{ MyClass:}
+  \KeywordTok{def} \FunctionTok{\_\_init\_\_}\NormalTok{(}\VariableTok{self}\NormalTok{, stack: Sequence[MyClass], item: OtherClass) }\OperatorTok{{-}\textgreater{}} \VariableTok{None}\NormalTok{:}
+
+\KeywordTok{class}\NormalTok{ OtherClass:}
+\NormalTok{  ...}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Yes:}
+\KeywordTok{class}\NormalTok{ MyClass:}
+  \KeywordTok{def} \FunctionTok{\_\_init\_\_}\NormalTok{(}\VariableTok{self}\NormalTok{, stack: Sequence[}\StringTok{\textquotesingle{}MyClass\textquotesingle{}}\NormalTok{], item: }\StringTok{\textquotesingle{}OtherClass\textquotesingle{}}\NormalTok{) }\OperatorTok{{-}\textgreater{}} \VariableTok{None}\NormalTok{:}
+
+\KeywordTok{class}\NormalTok{ OtherClass:}
+\NormalTok{  ...}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+\paragraph{Default Values}
+
+As per
+\href{https://peps.python.org/pep-0008/\#other-recommendations}{PEP-008},
+use spaces around the \texttt{=} \emph{only} for arguments that have
+both a type annotation and a default value.
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Yes:}
+\KeywordTok{def}\NormalTok{ func(a: }\BuiltInTok{int} \OperatorTok{=} \DecValTok{0}\NormalTok{) }\OperatorTok{{-}\textgreater{}} \BuiltInTok{int}\NormalTok{:}
+\NormalTok{  ...}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{No:}
+\KeywordTok{def}\NormalTok{ func(a:}\BuiltInTok{int}\OperatorTok{=}\DecValTok{0}\NormalTok{) }\OperatorTok{{-}\textgreater{}} \BuiltInTok{int}\NormalTok{:}
+\NormalTok{  ...}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+\paragraph{NoneType}
+
+In the Python type system, \texttt{NoneType} is a ``first class'' type,
+and for typing purposes, \texttt{None} is an alias for
+\texttt{NoneType}. If an argument can be \texttt{None}, it has to be
+declared! You can use \texttt{\textbar{}} union type expressions
+(recommended in new Python 3.10+ code), or the older \texttt{Optional}
+and \texttt{Union} syntaxes.
+
+Use explicit \texttt{X\ \textbar{}\ None} instead of implicit. Earlier
+versions of PEP 484 allowed \texttt{a:\ str\ =\ None} to be interpreted
+as \texttt{a:\ str\ \textbar{}\ None\ =\ None}, but that is no longer
+the preferred behavior.
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Yes:}
+\KeywordTok{def}\NormalTok{ modern\_or\_union(a: }\BuiltInTok{str} \OperatorTok{|} \BuiltInTok{int} \OperatorTok{|} \VariableTok{None}\NormalTok{, b: }\BuiltInTok{str} \OperatorTok{|} \VariableTok{None} \OperatorTok{=} \VariableTok{None}\NormalTok{) }\OperatorTok{{-}\textgreater{}} \BuiltInTok{str}\NormalTok{:}
+\NormalTok{  ...}
+\KeywordTok{def}\NormalTok{ union\_optional(a: Union[}\BuiltInTok{str}\NormalTok{, }\BuiltInTok{int}\NormalTok{, }\VariableTok{None}\NormalTok{], b: Optional[}\BuiltInTok{str}\NormalTok{] }\OperatorTok{=} \VariableTok{None}\NormalTok{) }\OperatorTok{{-}\textgreater{}} \BuiltInTok{str}\NormalTok{:}
+\NormalTok{  ...}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{No:}
+\KeywordTok{def}\NormalTok{ nullable\_union(a: Union[}\VariableTok{None}\NormalTok{, }\BuiltInTok{str}\NormalTok{]) }\OperatorTok{{-}\textgreater{}} \BuiltInTok{str}\NormalTok{:}
+\NormalTok{  ...}
+\KeywordTok{def}\NormalTok{ implicit\_optional(a: }\BuiltInTok{str} \OperatorTok{=} \VariableTok{None}\NormalTok{) }\OperatorTok{{-}\textgreater{}} \BuiltInTok{str}\NormalTok{:}
+\NormalTok{  ...}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+\paragraph{Type Aliases}
+
+You can declare aliases of complex types. The name of an alias should be
+CapWorded. If the alias is used only in this module, it should be
+\_Private.
+
+Note that the \texttt{:\ TypeAlias} annotation is only supported in
+versions 3.10+.
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{from}\NormalTok{ typing }\ImportTok{import}\NormalTok{ TypeAlias}
+
+\NormalTok{\_LossAndGradient: TypeAlias }\OperatorTok{=} \BuiltInTok{tuple}\NormalTok{[tf.Tensor, tf.Tensor]}
+\NormalTok{ComplexTFMap: TypeAlias }\OperatorTok{=}\NormalTok{ Mapping[}\BuiltInTok{str}\NormalTok{, \_LossAndGradient]}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+\paragraph{Ignoring Types}
+
+You can disable type checking on a line with the special comment
+\texttt{\#\ type:\ ignore}.
+
+\texttt{pytype} has a disable option for specific errors (similar to
+lint):
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# pytype: disable=attribute{-}error}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+\paragraph{Typing Variables}
+
+\hyperref[annotated-assignments]{\emph{Annotated Assignments}} : If an
+internal variable has a type that is hard or impossible to infer,
+specify its type with an annotated assignment - use a colon and type
+between the variable name and value (the same as is done with function
+arguments that have a default value):
+
+\begin{verbatim}
+```python
+a: Foo = SomeUndecoratedFunction()
+```
+\end{verbatim}
+
+\hyperref[type-comments]{\emph{Type Comments}} : Though you may see them
+remaining in the codebase (they were necessary before Python 3.6), do
+not add any more uses of a
+\texttt{\#\ type:\ \textless{}type\ name\textgreater{}} comment on the
+end of the line:
+
+\begin{verbatim}
+```python
+a = SomeUndecoratedFunction()  # type: Foo
+```
+\end{verbatim}
+
+\paragraph{Tuples vs Lists}
+
+Typed lists can only contain objects of a single type. Typed tuples can
+either have a single repeated type or a set number of elements with
+different types. The latter is commonly used as the return type from a
+function.
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{a: }\BuiltInTok{list}\NormalTok{[}\BuiltInTok{int}\NormalTok{] }\OperatorTok{=}\NormalTok{ [}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{]}
+\NormalTok{b: }\BuiltInTok{tuple}\NormalTok{[}\BuiltInTok{int}\NormalTok{, ...] }\OperatorTok{=}\NormalTok{ (}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{)}
+\NormalTok{c: }\BuiltInTok{tuple}\NormalTok{[}\BuiltInTok{int}\NormalTok{, }\BuiltInTok{str}\NormalTok{, }\BuiltInTok{float}\NormalTok{] }\OperatorTok{=}\NormalTok{ (}\DecValTok{1}\NormalTok{, }\StringTok{"2"}\NormalTok{, }\FloatTok{3.5}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+\paragraph{3Type variables}
+
+The Python type system has
+\href{https://peps.python.org/pep-0484/\#generics}{generics}. A type
+variable, such as \texttt{TypeVar} and \texttt{ParamSpec}, is a common
+way to use them.
+
+Example:
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{from}\NormalTok{ collections.abc }\ImportTok{import}\NormalTok{ Callable}
+\ImportTok{from}\NormalTok{ typing }\ImportTok{import}\NormalTok{ ParamSpec, TypeVar}
+\NormalTok{\_P }\OperatorTok{=}\NormalTok{ ParamSpec(}\StringTok{"\_P"}\NormalTok{)}
+\NormalTok{\_T }\OperatorTok{=}\NormalTok{ TypeVar(}\StringTok{"\_T"}\NormalTok{)}
+\NormalTok{...}
+\KeywordTok{def} \BuiltInTok{next}\NormalTok{(l: }\BuiltInTok{list}\NormalTok{[\_T]) }\OperatorTok{{-}\textgreater{}}\NormalTok{ \_T:}
+  \ControlFlowTok{return}\NormalTok{ l.pop()}
+
+\KeywordTok{def}\NormalTok{ print\_when\_called(f: Callable[\_P, \_T]) }\OperatorTok{{-}\textgreater{}}\NormalTok{ Callable[\_P, \_T]:}
+  \KeywordTok{def}\NormalTok{ inner(}\OperatorTok{*}\NormalTok{args: \_P.args, }\OperatorTok{**}\NormalTok{kwargs: \_P.kwargs) }\OperatorTok{{-}\textgreater{}}\NormalTok{ \_T:}
+    \BuiltInTok{print}\NormalTok{(}\StringTok{"Function was called"}\NormalTok{)}
+    \ControlFlowTok{return}\NormalTok{ f(}\OperatorTok{*}\NormalTok{args, }\OperatorTok{**}\NormalTok{kwargs)}
+  \ControlFlowTok{return}\NormalTok{ inner}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+A \texttt{TypeVar} can be constrained:
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{AddableType }\OperatorTok{=}\NormalTok{ TypeVar(}\StringTok{"AddableType"}\NormalTok{, }\BuiltInTok{int}\NormalTok{, }\BuiltInTok{float}\NormalTok{, }\BuiltInTok{str}\NormalTok{)}
+\KeywordTok{def}\NormalTok{ add(a: AddableType, b: AddableType) }\OperatorTok{{-}\textgreater{}}\NormalTok{ AddableType:}
+  \ControlFlowTok{return}\NormalTok{ a }\OperatorTok{+}\NormalTok{ b}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+A common predefined type variable in the \texttt{typing} module is
+\texttt{AnyStr}. Use it for multiple annotations that can be
+\texttt{bytes} or \texttt{str} and must all be the same type.
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{from}\NormalTok{ typing }\ImportTok{import}\NormalTok{ AnyStr}
+\KeywordTok{def}\NormalTok{ check\_length(x: AnyStr) }\OperatorTok{{-}\textgreater{}}\NormalTok{ AnyStr:}
+  \ControlFlowTok{if} \BuiltInTok{len}\NormalTok{(x) }\OperatorTok{\textless{}=} \DecValTok{42}\NormalTok{:}
+    \ControlFlowTok{return}\NormalTok{ x}
+  \ControlFlowTok{raise} \PreprocessorTok{ValueError}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+A type variable must have a descriptive name, unless it meets all of the
+following criteria:
+
+\begin{itemize}
+\tightlist
+\item
+  not externally visible
+\item
+  not constrained
+\end{itemize}
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Yes:}
+\NormalTok{  \_T }\OperatorTok{=}\NormalTok{ TypeVar(}\StringTok{"\_T"}\NormalTok{)}
+\NormalTok{  \_P }\OperatorTok{=}\NormalTok{ ParamSpec(}\StringTok{"\_P"}\NormalTok{)}
+\NormalTok{  AddableType }\OperatorTok{=}\NormalTok{ TypeVar(}\StringTok{"AddableType"}\NormalTok{, }\BuiltInTok{int}\NormalTok{, }\BuiltInTok{float}\NormalTok{, }\BuiltInTok{str}\NormalTok{)}
+\NormalTok{  AnyFunction }\OperatorTok{=}\NormalTok{ TypeVar(}\StringTok{"AnyFunction"}\NormalTok{, bound}\OperatorTok{=}\NormalTok{Callable)}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{No:}
+\NormalTok{  T }\OperatorTok{=}\NormalTok{ TypeVar(}\StringTok{"T"}\NormalTok{)}
+\NormalTok{  P }\OperatorTok{=}\NormalTok{ ParamSpec(}\StringTok{"P"}\NormalTok{)}
+\NormalTok{  \_T }\OperatorTok{=}\NormalTok{ TypeVar(}\StringTok{"\_T"}\NormalTok{, }\BuiltInTok{int}\NormalTok{, }\BuiltInTok{float}\NormalTok{, }\BuiltInTok{str}\NormalTok{)}
+\NormalTok{  \_F }\OperatorTok{=}\NormalTok{ TypeVar(}\StringTok{"\_F"}\NormalTok{, bound}\OperatorTok{=}\NormalTok{Callable)}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+\paragraph{String types}
+
+\begin{quote}
+Do not use \texttt{typing.Text} in new code. It's only for Python 2/3
+compatibility.
+\end{quote}
+
+Use \texttt{str} for string/text data. For code that deals with binary
+data, use \texttt{bytes}.
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ deals\_with\_text\_data(x: }\BuiltInTok{str}\NormalTok{) }\OperatorTok{{-}\textgreater{}} \BuiltInTok{str}\NormalTok{:}
+\NormalTok{  ...}
+\KeywordTok{def}\NormalTok{ deals\_with\_binary\_data(x: }\BuiltInTok{bytes}\NormalTok{) }\OperatorTok{{-}\textgreater{}} \BuiltInTok{bytes}\NormalTok{:}
+\NormalTok{  ...}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+If all the string types of a function are always the same, for example
+if the return type is the same as the argument type in the code above,
+use \hyperref[typing-type-var]{AnyStr}.
+
+\paragraph{Imports For Typing}
+
+For symbols (including types, functions, and constants) from the
+\texttt{typing} or \texttt{collections.abc} modules used to support
+static analysis and type checking, always import the symbol itself. This
+keeps common annotations more concise and matches typing practices used
+around the world. You are explicitly allowed to import multiple specific
+symbols on one line from the \texttt{typing} and
+\texttt{collections.abc} modules. For example:
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{from}\NormalTok{ collections.abc }\ImportTok{import}\NormalTok{ Mapping, Sequence}
+\ImportTok{from}\NormalTok{ typing }\ImportTok{import}\NormalTok{ Any, Generic, cast, TYPE\_CHECKING}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+Given that this way of importing adds items to the local namespace,
+names in \texttt{typing} or \texttt{collections.abc} should be treated
+similarly to keywords, and not be defined in your Python code, typed or
+not. If there is a collision between a type and an existing name in a
+module, import it using \texttt{import\ x\ as\ y}.
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{from}\NormalTok{ typing }\ImportTok{import}\NormalTok{ Any }\ImportTok{as}\NormalTok{ AnyType}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+Prefer to use built-in types as annotations where available. Python
+supports type annotations using parametric container types via
+\href{https://peps.python.org/pep-0585/}{PEP-585}, introduced in Python
+3.9.
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ generate\_foo\_scores(foo: }\BuiltInTok{set}\NormalTok{[}\BuiltInTok{str}\NormalTok{]) }\OperatorTok{{-}\textgreater{}} \BuiltInTok{list}\NormalTok{[}\BuiltInTok{float}\NormalTok{]:}
+\NormalTok{  ...}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+\paragraph{Conditional Imports}
+
+Use conditional imports only in exceptional cases where the additional
+imports needed for type checking must be avoided at runtime. This
+pattern is discouraged; alternatives such as refactoring the code to
+allow top-level imports should be preferred.
+
+Imports that are needed only for type annotations can be placed within
+an \texttt{if\ TYPE\_CHECKING:} block.
+
+\begin{itemize}
+\tightlist
+\item
+  Conditionally imported types need to be referenced as strings, to be
+  forward compatible with Python 3.6 where the annotation expressions
+  are actually evaluated.
+\item
+  Only entities that are used solely for typing should be defined here;
+  this includes aliases. Otherwise it will be a runtime error, as the
+  module will not be imported at runtime.
+\item
+  The block should be right after all the normal imports.
+\item
+  There should be no empty lines in the typing imports list.
+\item
+  Sort this list as if it were a regular imports list.
+\end{itemize}
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{import}\NormalTok{ typing}
+\ControlFlowTok{if}\NormalTok{ typing.TYPE\_CHECKING:}
+  \ImportTok{import}\NormalTok{ sketch}
+\KeywordTok{def}\NormalTok{ f(x: }\StringTok{"sketch.Sketch"}\NormalTok{): ...}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+\paragraph{Circular Dependencies}
+
+Circular dependencies that are caused by typing are code smells. Such
+code is a good candidate for refactoring. Although technically it is
+possible to keep circular dependencies, various build systems will not
+let you do so because each module has to depend on the other.
+
+Replace modules that create circular dependency imports with
+\texttt{Any}. Set an \hyperref[typing-aliases]{alias} with a meaningful
+name, and use the real type name from this module (any attribute of
+\texttt{Any} is \texttt{Any}). Alias definitions should be separated
+from the last import by one line.
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{from}\NormalTok{ typing }\ImportTok{import}\NormalTok{ Any}
+
+\NormalTok{some\_mod }\OperatorTok{=}\NormalTok{ Any  }\CommentTok{\# some\_mod.py imports this module.}
+\NormalTok{...}
+
+\KeywordTok{def}\NormalTok{ my\_method(}\VariableTok{self}\NormalTok{, var: }\StringTok{"some\_mod.SomeType"}\NormalTok{) }\OperatorTok{{-}\textgreater{}} \VariableTok{None}\NormalTok{:}
+\NormalTok{  ...}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+\paragraph{Generics}
+
+When annotating, prefer to specify type parameters for generic types;
+otherwise, \href{https://peps.python.org/pep-0484/\#the-any-type}{the
+generics' parameters will be assumed to be \texttt{Any}}.
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Yes:}
+\KeywordTok{def}\NormalTok{ get\_names(employee\_ids: Sequence[}\BuiltInTok{int}\NormalTok{]) }\OperatorTok{{-}\textgreater{}}\NormalTok{ Mapping[}\BuiltInTok{int}\NormalTok{, }\BuiltInTok{str}\NormalTok{]:}
+\NormalTok{  ...}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# No:}
+\CommentTok{\# This is interpreted as get\_names(employee\_ids: Sequence[Any]) {-}\textgreater{} Mapping[Any, Any]}
+\KeywordTok{def}\NormalTok{ get\_names(employee\_ids: Sequence) }\OperatorTok{{-}\textgreater{}}\NormalTok{ Mapping:}
+\NormalTok{  ...}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+If the best type parameter for a generic is \texttt{Any}, make it
+explicit, but remember that in many cases
+\hyperref[typing-type-var]{\texttt{TypeVar}} might be more appropriate:
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# No:}
+\KeywordTok{def}\NormalTok{ get\_names(employee\_ids: Sequence[Any]) }\OperatorTok{{-}\textgreater{}}\NormalTok{ Mapping[Any, }\BuiltInTok{str}\NormalTok{]:}
+  \CommentTok{"""Returns a mapping from employee ID to employee name for given IDs."""}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Yes:}
+\NormalTok{\_T }\OperatorTok{=}\NormalTok{ TypeVar(}\StringTok{\textquotesingle{}\_T\textquotesingle{}}\NormalTok{)}
+\KeywordTok{def}\NormalTok{ get\_names(employee\_ids: Sequence[\_T]) }\OperatorTok{{-}\textgreater{}}\NormalTok{ Mapping[\_T, }\BuiltInTok{str}\NormalTok{]:}
+  \CommentTok{"""Returns a mapping from employee ID to employee name for given IDs."""}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+\section{Parting Words}
+\emph{BE CONSISTENT}.
+
+If you're editing code, take a few minutes to look at the code around
+you and determine its style. If they use \texttt{\_idx} suffixes in
+index variable names, you should too. If their comments have little
+boxes of hash marks around them, make your comments have little boxes of
+hash marks around them too.
+
+The point of having style guidelines is to have a common vocabulary of
+coding so people can concentrate on what you're saying rather than on
+how you're saying it. We present global style rules here so people know
+the vocabulary, but local style is also important. If code you add to a
+file looks drastically different from the existing code around it, it
+throws readers out of their rhythm when they go to read it.
+
+However, there are limits to consistency. It applies more heavily
+locally and on choices unspecified by the global style. Consistency
+should not generally be used as a justification to do things in an old
+style without considering the benefits of the new style, or the tendency
+of the codebase to converge on newer styles over time.
+
+\end{document}

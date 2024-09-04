@@ -1,0 +1,1 @@
+pandoc pyguide.md -o --read=markdown --write=latex --output=pyguide_raw.tex --standalone --toc
